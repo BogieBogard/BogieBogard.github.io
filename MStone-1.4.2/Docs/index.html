@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Docs</title>
+
+	<!-- CSS -->
+	<!-- Bootstrap core CSS -->
+	<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+	<link href="assets/css/prettify.css" rel="stylesheet">
+
+	<!-- Custom styles CSS -->
+	<link href="assets/css/style.css" rel="stylesheet" media="screen">
+
+</head>
+<body>
+
+	<div class="container main">
+		<div class="row">
+
+			<div class="col-md-3">
+
+				<div class="sidebar hidden-print my_affix" role="complementary" data-spy="affix" data-offset-top="10" data-offset-bottom="200">
+					<ul class="nav sidenav">
+						<li class="active"><a href="#introduction">Introduction</a></li>
+						<li class="">
+							<a href="#customization">Customization</a>
+							<ul class="nav">
+								<li class=""><a href="#preloader">Preloader</a></li>
+								<li class=""><a href="#change-the-background">Change the background</a></li>
+								<li class=""><a href="#wow-animation">Wow-animation</a></li>
+								<li class=""><a href="#text rotator">Text rotator</a></li>
+								<li class=""><a href="#contact">Configuring Contact form</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="col-md-9">
+
+				<section class="header">
+					<h1>Docs.</h1>
+				</section>
+
+				<section class="section">
+
+					<h2 id="introduction">Introduction</h2>
+					<h4>Hi customer!</h4>
+					<p>Thank you for choosing this template. If you have any questions please feel free to email <a href="mailto:web-master72@yandex.ru">here</a>.</p>
+
+					<!-- Customization -->
+
+					<h2 id="customization">Customization</h2>
+
+					<h3 id="preloader">Preloader</h3>
+					<p>Enter your name (<code>index.html</code>): </p>
+
+<pre class="prettyprint lang-js">
+&lt;!-- Preloader --&gt;
+
+&lt;div id="preloader"&gt;
+    &lt;div id="status"&gt;
+        &lt;div class="status-mes"&gt;&lt;h4&gt;Mark Stone&lt;/h4&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+					<p>You can change preloader image (<code>style.css</code>):</p>
+<pre class="prettyprint lang-css">
+#status, .status-mes {
+	background-image: url(../images/488.GIF);
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 200px;
+	left: 50%;
+	margin: -100px 0 0 -100px;
+	position: absolute;
+	top: 50%;
+	width: 200px;
+}
+</pre>
+					<p>Change <code>background-image</code></p>
+
+					<!-- Change the background -->
+
+					<h3 id="change-the-background">Change the background</h3>
+					<p>To change the background image in the file <code>assets/js/custom.js</code> change <code>assets/images/bg1.jpg</code>  on any other image.</p>
+
+<pre class="prettyprint lang-js">
+/* ---------------------------------------------- /*
+ * Background image
+/* ---------------------------------------------- */
+
+$.backstretch(['assets/images/bg1.jpg']);
+</pre>
+
+					<p>To use slideshow:</p>
+
+<pre class="prettyprint lang-js">
+$.backstretch([
+	'assets/images/bg1.jpg',
+	'assets/images/bg2.jpg',
+	'assets/images/bg3.jpg'
+], {duration: 3000, fade: 750});
+</pre>
+
+					<!-- WOW Animation -->
+
+					<h3 id="wow-animation">WOW Animation</h2>
+
+					<p>Animations When You Scroll. Add class to any element <code>wow</code>, then add class of <a href="http://daneden.github.io/animate.css/">animations</a>.</p>
+
+					<p><b>Example #1: </b></p>
+
+<pre class="prettyprint lang-html">
+&lt;p class="wow fadeInUp"&gt;Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.&lt;/p&gt;
+</pre>
+
+					<p><b>Example #2: </b></p>
+
+<pre class="prettyprint lang-html">
+&lt;div class="col-md-4 col-sm-4 wow fadeInRight"&gt;
+	...
+&lt;/div&gt;
+</pre>
+					<p><b>Example #3: </b></p>
+<pre class="prettyprint lang-html">
+&lt;div class="col-md-4 col-sm-4 wow fadeInRight" data-wow-delay=".6s" &gt;
+	...
+&lt;/div&gt;
+</pre>
+				<p>Use <code>data-wow-delay</code> for delay.</p>
+					<!-- Text rotator -->
+
+					<h3 id="text rotator">Text rotator</h3>
+
+					<p>You can use Text rotator:</p>
+
+					<p><b>Example: </b></p>
+
+<pre class="prettyprint lang-html">
+&lt;span class="rotate"&gt;Visual Designer. | Front-end Developer. | C# Programmer.&lt;/span&gt;
+</pre>
+				<p>Use "<code>|</code>" separator.</p>
+
+				<p>Config text rotator in <code>assets/custom.js</code>:</p>
+
+<pre class="prettyprint lang-js">
+/* ---------------------------------------------- /*
+ * Rotate
+/* ---------------------------------------------- */
+
+$(".rotate").textrotator({
+    animation: "dissolve",
+    separator: "|",
+    peed: 3000
+});
+</pre>
+
+				<!-- Configuring Contact form -->
+
+				<h3 id="contact">Configuring Contact form</h3>
+
+				<p>Open the file <code>assets/php/contact.php</code> and enter your data:</p>
+
+				<p><b>Example: </b></p>
+
+<pre class="prettyprint lang-basic">
+// Contact
+$to = 'web-master72@yandex.ru';
+$subject = 'Subject here...';
+</pre>
+<p></p>
+
+				<p>If contact form not working:</p>
+
+<pre class="prettyprint lang-basic">
+&lt;?php
+    mail('you@yourmail.com','Test mail','The mail function is working!');
+    echo 'Mail sent!';
+?&gt;
+</pre>
+<p></p>
+				<p>1. Save this code as mailtest.php</p>
+				<p>2. change you@yourmail.com to your e-mail address</p>
+				<p>3. upload mailtest.php to your server</p>
+				<p>4. open mailtest.php in your browser (http://yourwebsite.com/mailtest.php)</p>
+				<p>5. check your inbox to see if a test message arrived.</p>
+
+				<p>If it works:</p>
+
+				<p>1. double-check your form script for errors (like e-mail address misspelling)</p>
+				<p>2. use the same e-mail address as your form recipient</p>
+				<p>3. double-check your SPAM filters and SPAM/Junk/Bulk mailboxes</p>
+
+				<p>If it not:</p>
+
+				<p>Contact your host and ask them to check PHP mail() setting.</p>
+
+				<p>If you have any questions please feel free to email <a href="mailto:web-master72@yandex.ru">here</a>.</p>
+
+				</section>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Javascript files -->
+	<!-- jQuery -->
+	<script src="assets/js/jquery-1.11.0.min.js"></script>
+	<!-- Bootstrap JS -->
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<!--HL -->
+	<script src="assets/js/prettify/prettify.js"></script>
+	<!-- Custom scripts -->
+	<script src="assets/js/custom.js"></script>
+
+</body>
+</html>
