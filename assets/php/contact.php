@@ -1,7 +1,7 @@
 <?php
 
 	// Mail settings
-	$to      = "yourmail@here.com";
+	$to      = "mbogard@utexas.edu";
 	$subject = "Core Contact Form";
 
 	// You can put here your email
