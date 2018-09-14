@@ -1,3 +1,15 @@
 .customWhiteText {
     color: white;
 }
+
+
+/* Begin Self Typing Developer */
+
+#selfTypingText {
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-transform: lowercase; */
+    font-size: 12pt;
+    letter-spacing: unset;
+}
+
+/* End Self Typing Developer */
