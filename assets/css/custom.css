@@ -13,3 +13,10 @@
 }
 
 /* End Self Typing Developer */
+
+/* Add text "Double tap 'Download Resume' to view */
+@media only screen and (min-width: 550px) {
+    .mobileDownloadResumeText {
+        display: none;
+    }
+}
