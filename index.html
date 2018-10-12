@@ -79,7 +79,7 @@
 
 						<p class="mobileDownloadResumeText removeSpaceForMobileText">Double tap "Download Resume" to view</p>
 						<p class="m-b-80 removeSpaceForMobileText">
-							<a class="btn btn-brand" href="./assets/resume/matthewBogardResume.pdf"><span>Download Resume</span></a>
+							<a class="btn btn-brand" href="./assets/resume/matthewBogardResume10.12.18.pdf"><span>Download Resume</span></a>
 						</p>
 
 						<img src="assets/images/iphone-5.png" alt="">
@@ -103,6 +103,12 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
+						
+						<!-- Start React Component -->
+						<div id="like_button_container"></div>
+						<!-- End React Component -->
+
+
 						<div class="m-title c-align">
 							<h2>Featured Work</h2>
 							<h6>2018 Portfolio</h6>
@@ -378,6 +384,14 @@
 	<script src="assets/js/custom.min.js"></script>
 	<!-- Scripts for Self Typing Text -->
 	<script src="assets/js/custom.js"></script>
+	<!-- Load React. -->
+	<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+	<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+	<!-- Load our React component. -->
+	<script src="assets/js/like_button.js"></script>
+
+
 	<!-- Color Switcher (For different future customization--purposefully commented out)-->
 	<!-- <script src="assets/js/style-switcher.min.js"></script> -->
 </body>
