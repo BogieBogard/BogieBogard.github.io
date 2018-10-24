@@ -1,22 +1,26 @@
 .customWhiteText {
-    color: white;
+  color: white;
 }
-
 
 /* Begin Self Typing Developer */
 
 #selfTypingText {
-    /* font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-transform: lowercase; */
-    font-size: 12pt;
-    letter-spacing: unset;
+  font-size: 12pt;
+  letter-spacing: unset;
 }
 
 /* End Self Typing Developer */
 
 /* Add text "Double tap 'Download Resume' to view */
 @media only screen and (min-width: 550px) {
-    .mobileDownloadResumeText {
-        display: none;
-    }
+  .mobileDownloadResumeText {
+    display: none;
+  }
+}
+
+/* Formatting for my LinkedIn and GitHub profiles */
+.linkedInAndGitHub {
+  color: white;
 }
