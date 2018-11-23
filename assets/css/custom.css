@@ -5,8 +5,6 @@
 /* Begin Self Typing Developer */
 
 #selfTypingText {
-  /* font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-transform: lowercase; */
   font-size: 12pt;
   letter-spacing: unset;
 }
@@ -23,4 +21,14 @@
 /* Formatting for my LinkedIn and GitHub profiles */
 .linkedInAndGitHub {
   color: white;
+}
+
+/* Simple class for Verdana font */
+.verdanaFont {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Class just for removing the default uppercase */
+.removeUppercase {
+  text-transform: none;
 }
