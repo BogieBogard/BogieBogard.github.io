@@ -32,3 +32,7 @@
 .removeUppercase {
   text-transform: none;
 }
+
+.customPaddingTopSubheading {
+  padding-top: 25px;
+}
