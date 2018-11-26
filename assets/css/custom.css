@@ -36,3 +36,8 @@
 .customPaddingTopSubheading {
   padding-top: 25px;
 }
+
+/* Need a custom color for the additional links to GitHub and LinkedIn to go with the footer color */
+.footerLinkColor {
+  color: azure;
+}
