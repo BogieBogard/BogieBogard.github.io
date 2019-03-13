@@ -91,7 +91,7 @@
 
 						<!-- Start Self Type Developer -->
 						<h1 id="selfTypingText"> I am a
-							<a href="" class="typewrite" data-period="2000" data-type='[ "MySQL", "Node.js", "React", "Sequelize", "MongoDB", "Full-Stack"]'><span
+							<a href="" class="typewrite" data-period="2000" data-type='[ "MySQL", "Node.js", "React","Front-End", "Back-End", "Full-Stack", "JavaScript"]'><span
 								 class="wrap"></span></a>
 							Developer
 						</h1>
@@ -115,34 +115,48 @@
 		</section>
 		<!-- Page Header end-->
 
-		<!-- Portfolio-->
-		<section class="p-b-0" id="portfolio">
-			<div class="container">
-				<div class="row">
-					<!-- The featured project image is too large when using the class 'col-md-12' so it was changed to 'col-md-6' with empty buffer col-3s on each side -->
-					<div class="col-3"></div>
-					<div class="col-md-6">
-						<div class="container-fluid customPaddingTopSubheading">
-							<h2 class="text-center">Featured Project</h2>
-							<h5 class="text-center">US Census Data Visualization</h5>
-							<h6 class="verdanaFont removeUppercase text-center">Click on the image to view the project.</h6>
-							<div class="portfolio-item js-tilt" onclick="window.location.href='https://us-census-data.herokuapp.com/'">
-								<div class="portfolio-wrapper">
-									<div class="portfolio-img-wrap" data-background="./assets/images/unitedStatesMapPainting.jpg"></div>
-									<div class="portfolio-overlay"></div>
-									<div class="portfolio-caption">
-										<h5 class="portfolio-title">US Census Data Visualization</h5>
-										<h6 class="portfolio-subtitle">MySQL and Node.js</h6>
-									</div>
-								</div>
-								<div class="portfolio-link photo" href="./assets/images/unitedStatesMapPainting.jpg"></div>
+		<!-- Featured Projects -->
+		<section class="module-slides">
+			<ul class="slides-container">
+				<li class="bg-dark bg-gradient"><img src="./assets/images/unitedStatesMapPainting.jpg" alt="US Census Data Background Image">
+					<div class="container" onclick="window.location.href='https://us-census-data.herokuapp.com/'">
+						<div class="row">
+							<div class="col-md-12">
+								<h1 class="h1 m-b-10 wow fadeInDown">US Census Data Visualization</h1>
+								<h1 class="h6 wow fadeInUp" data-wow-delay="0.5s">Featured Project (Click to view)</h1>
 							</div>
 						</div>
 					</div>
-					<div class="col-3"></div>
+				</li>
+				<li><img src="assets/images/Zilker.jpg" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="h6 wow fadeInDown">Knowledgable of</h1>
+							<h1 class="h1 m-b-10 wow fadeInUp" data-wow-delay="0.5s">Advanced Deployment Technologies</h1>
+							<h2 class="h3 m-b-10 wow fadeInUp" data-wow-delay="0.5s">Docker, Travis CI, and Amazon Web Services</h2>
+						</div>
+					</div>
 				</div>
+				</li>
+				<li class="bg-dark bg-dark-30"><img src="assets/images/agileMethodology.png" alt="">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-12">
+								<h1 class="h6 m-b-10 wow fadeInDown">Industry experience with</h1>
+								<h1 class="h1 m-b-10 wow fadeInUp" data-wow-delay="0.5s">Agile Methodologies</h1>
+							</div>
+						</div>
+					</div>
+				</li>
+				< </ul> <nav class="slides-navigation"><a class="next" href="#"><span class="ti-angle-right"></span></a><a class="prev"
+					 href="#"><span class="ti-angle-left"></span></a></nav>
+		</section>
+		<!-- Featured Projects end-->
 
-
+		<!-- Portfolio-->
+		<section class="p-b-0" id="portfolio">
+			<div class="container">
 				<!-- Row 1 - 2018 Projects -->
 				<div class="row">
 					<div class="col-md-12">
@@ -352,14 +366,6 @@
 	<script src="assets/js/custom.min.js"></script>
 	<!-- Scripts for Self Typing Text -->
 	<script src="assets/js/custom.js"></script>
-	<!-- Load React. -->
-	<!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-	<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
-	<!-- Load our React component. -->
-	<script src="assets/js/like_button.js"></script>
-
-
 	<!-- Color Switcher (For different future customization--purposefully commented out)-->
 	<!-- <script src="assets/js/style-switcher.min.js"></script> -->
 </body>
