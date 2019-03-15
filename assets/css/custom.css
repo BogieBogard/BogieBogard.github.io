@@ -41,3 +41,13 @@
 .footerLinkColor {
   color: azure;
 }
+
+/* Padding for the Featured Projects section (slides-navigation arrows) on mobile display */
+@media (max-width: 500px) {
+  .paddingForMobileDisplay1 {
+    padding-bottom: 120px;
+  }
+  .paddingForMobileDisplay2 {
+    padding-bottom: 70px;
+  }
+}

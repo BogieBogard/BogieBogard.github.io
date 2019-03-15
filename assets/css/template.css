@@ -1312,13 +1312,6 @@ button {
     }
 }
 
-@media (max-width: 767px) {
-    .slides-navigation a.prev,
-    .slides-navigation a.next {
-        display: none;
-    }
-}
-
 .owl-dots {
     text-align: center;
     line-height: 3px;
