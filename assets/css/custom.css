@@ -51,3 +51,16 @@
     padding-bottom: 70px;
   }
 }
+
+#customDownPad {
+  padding-bottom: 95px;
+}
+
+.disabledUppercase {
+  text-transform: none;
+}
+
+.digitalPortfolioBanner {
+  text-transform: none;
+  text-align: right;
+}
