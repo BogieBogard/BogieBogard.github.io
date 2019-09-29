@@ -169,7 +169,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div>
-                            <h2 class="text-center customPaddingTopSubheading">Digital Portfolio</h2>
+                            <h2 class="text-center customPaddingTopSubheading">Recent Projects</h2>
                             <h6 id="customDownPad" class="text-center verdanaFont removeUppercase">Click on an image to view that project.</h6>
                         </div>
 
@@ -177,12 +177,21 @@
                 </div>
             </div>
 
-            <!-- Posts-->
+            <!-- Posts -->
             <section class="module module-gray" id="blog">
                 <div class="container">
                     <div class="row blog-grid" style="margin-top: -200px;">
 
-                        <div class="col-md-3 post-item">
+                        <div class="col-md-4 post-item">
+                            <article class="post">
+                                <div class="post-preview">
+                                    <a href="https://us-census-data.herokuapp.com/"><img loading="lazy" src="assets/images/americaMap.png" alt=""></a>
+                                    <div class="post-category digitalPortfolioBanner" data-background-color="#ffbb44"><a href="#"><b>US Census Data</b></a><br><a class="digitalPortfolioBanner">Full Stack Web App</a></div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="col-md-4 post-item">
                             <article class="post">
                                 <div class="post-preview">
                                     <a href="https://github.com/BogieBogard/Compass/blob/master/README.md"><img loading="lazy" src="assets/images/JS.png" alt=""></a>
@@ -192,26 +201,7 @@
                             </article>
                         </div>
 
-                        <div class="col-md-3 post-item">
-                            <article class="post">
-                                <div class="post-preview">
-                                    <a href="https://github.com/BogieBogard/DevTinder"><img loading="lazy" src="assets/images/expressjsLogo.png" alt=""></a>
-                                    <div class="post-category digitalPortfolioBanner" data-background-color="#ffbb44"><a href="#"><b>DevTinder</b></a><br><a class="digitalPortfolioBanner">Powered
-											by Express.js</a></div>
-                                </div>
-                            </article>
-                        </div>
-
-                        <div class="col-md-3 post-item">
-                            <article class="post">
-                                <div class="post-preview">
-                                    <a href=""><img loading="lazy" src="assets/images/mySQLEnhanced.jpg" alt=""></a>
-                                    <div class="post-category digitalPortfolioBanner" data-background-color="#4CAF50"><a href="#"><b>Node.js and MySQL</b></a><br><a class="digitalPortfolioBanner">Tracking Business Data</a></div>
-                                </div>
-                            </article>
-                        </div>
-
-                        <div class="col-md-3 post-item">
+                        <div class="col-md-4 post-item">
                             <article class="post">
                                 <div class="post-preview">
                                     <a href="https://github.com/BogieBogard/Deep-Dream-Xcode"><img loading="lazy" src="assets/images/deepDreamWhiteSpace.jpg" alt=""></a>
@@ -235,57 +225,44 @@
                         </div>
                     </div>
                 </div>
-                <div class="row row-portfolio" data-columns="4">
+                <div class="row row-portfolio" data-columns="1">
                     <div class="grid-sizer"></div>
 
-                    <div class="portfolio-item js-tilt" onclick="window.location.href='https://github.com/BogieBogard/New-York-Times-React-Search'">
+                    <div class="portfolio-item js-tilt" onclick="window.location.href='https://medium.com/@mbogard/what-coding-bootcamps-dont-teach-c71c3182f11'">
                         <div class="portfolio-wrapper">
-                            <div class="portfolio-img-wrap" data-background="assets/images/react-native.png"></div>
+                            <div class="portfolio-img-wrap" data-background="assets/images/docker.jpg"></div>
                             <div class="portfolio-overlay"></div>
                             <div class="portfolio-caption">
-                                <h5 class="portfolio-title">NYTimes & WSJ React Search</h5>
-                                <h6 class="portfolio-subtitle">Powerful and Elegant JSX</h6>
+                                <h5 class="portfolio-title">Medium Article</h5>
+                                <h6 class="portfolio-subtitle">A piece I wrote on deployment tech</h6>
                             </div>
                         </div>
-                        <div class="portfolio-link photo" href="assets/images/react-native.png"></div>
+                        <div class="portfolio-link photo" href="assets/images/docker.jpg"></div>
                     </div>
-
-                    <div class="portfolio-item js-tilt web app" onclick="window.location.href='https://github.com/BogieBogard/LIRI-Node-Application'">
-                        <div class="portfolio-wrapper">
-                            <div class="portfolio-img-wrap" data-background="assets/images/nodejsPic.jpeg"></div>
-                            <div class="portfolio-overlay"></div>
-                            <div class="portfolio-caption">
-                                <h5 class="portfolio-title">Language Interpretation and Recognition Interface</h5>
-                                <h6 class="portfolio-subtitle">Node.js Command Line Application</h6>
-                            </div>
-                        </div>
-                        <div class="portfolio-link photo" href="assets/images/nodejsPic.jpeg"></div>
-                    </div>
-
-                    <div class="portfolio-item js-tilt gov web design" onclick="window.location.href='https://mbogard.com/HHS-Website-Improvements/'">
-                        <div class="portfolio-wrapper">
-                            <div class="portfolio-img-wrap" data-background="./assets/images/HHS.png"></div>
-                            <div class="portfolio-overlay"></div>
-                            <div class="portfolio-caption">
-                                <h5 class="portfolio-title">Texas Health and Human Services</h5>
-                                <h6 class="portfolio-subtitle">Front-End Bug Fixes</h6>
-                            </div>
-                        </div>
-                        <div class="portfolio-link" href="./assets/images/HHS.png"></div>
-                    </div>
-
 
                     <div class="portfolio-item js-tilt branding" onclick="window.location.href='https://mbogard.com/music'">
                         <div class="portfolio-wrapper">
                             <div class="portfolio-img-wrap" data-background="./assets/images/toInfinity.jpg"></div>
                             <div class="portfolio-overlay"></div>
                             <div class="portfolio-caption">
-                                <h5 class="portfolio-title">From Here To Infinity</h5>
-                                <h6 class="portfolio-subtitle">Personal Musical Album</h6>
+                                <h5 class="portfolio-title">Personal Music Album</h5>
                             </div>
                         </div>
                         <div class="portfolio-link photo" href="./assets/images/toInfinity.jpg"></div>
                     </div>
+
+                    <div class="portfolio-item js-tilt branding" onclick="window.location.href='https://github.com/BogieBogard/Node.js-and-MySQL'">
+                        <div class="portfolio-wrapper">
+                            <div class="portfolio-img-wrap" data-background="./assets/images/nodejsStylish.png"></div>
+                            <div class="portfolio-overlay"></div>
+                            <div class="portfolio-caption">
+                                <h5 class="portfolio-title">Node.js and MySQL</h5>
+                                <h6 class="portfolio-subtitle">Tracking business data</h6>
+                            </div>
+                        </div>
+                        <div class="portfolio-link photo" href="./assets/images/nodejsStylish.png"></div>
+                    </div>
+
                 </div>
             </div>
             </div>
