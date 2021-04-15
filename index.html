@@ -57,8 +57,13 @@
                 <div class="inner-nav onepage-nav">
                     <ul>
                         <li><a href="#home"><span class="menu-item-span">Home</span></a></li>
-                        <li><a href="#portfolio"><span class="menu-item-span">Work</span></a></li>
-                        <li><a href="#contact"><span class="menu-item-span">Connect</span></a></li>
+                        <li><a href="./assets/resume/matthewBogardResume2.15.2021.pdf"><span class="menu-item-span">Resume</span></a></li>
+                        <li><a href="#personal"><span class="menu-item-span">Personal Work</span></a></li>
+                        <li><a href="#fun"><span class="menu-item-span">Fun Stuff</span></a></li>
+                        <li><a href="https://www.linkedin.com/in/matthew-bogard/"><span class="menu-item-span">LinkedIn</span></a></li>
+                        <li><a href="https://mbogard.com/music"><span class="menu-item-span">Music</span></a></li>
+                        <li><a href="https://open.spotify.com/artist/1L5PD6WCURJag3zYWn8JPM"><span class="menu-item-span">Spotify</span></a></li>
+                        <li><a href="https://www.instagram.com/bogiebogard/"><span class="menu-item-span">Social</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -163,7 +168,7 @@
         <section class="p-b-0">
             <div class="container">
                 <!-- Row 1 - 2018 Projects -->
-                <div class="row">
+                <div class="row" id="personal">
                     <div class="col-md-12">
                         <div>
                             <h2 class="text-center customPaddingTopSubheading">Personal Projects</h2>
@@ -214,16 +219,27 @@
 
 
             <!-- Row 2 -  Digital Portfolio -->
-            <div class="container-fluid">
+            <div class="container-fluid" id="fun">
                 <div class="row">
                     <div class="col-md-12">
                         <div>
-                            <h2 class="text-center customPaddingTopSubheading">Notable Mentions</h2>
+                            <h2 class="text-center customPaddingTopSubheading">Fun stuff</h2>
                         </div>
                     </div>
                 </div>
                 <div class="row row-portfolio" data-columns="1">
                     <div class="grid-sizer"></div>
+
+                    <div class="portfolio-item js-tilt branding" onclick="window.location.href='https://mbogard.com/music'">
+                        <div class="portfolio-wrapper">
+                            <div class="portfolio-img-wrap" data-background="./assets/images/toInfinity.jpg"></div>
+                            <div class="portfolio-overlay"></div>
+                            <div class="portfolio-caption">
+                                <h5 class="portfolio-title">My 2017 Album</h5>
+                            </div>
+                        </div>
+                        <div class="portfolio-link photo" href="./assets/images/toInfinity.jpg"></div>
+                    </div>
 
                     <div class="portfolio-item js-tilt" onclick="window.location.href='https://medium.com/@mbogard/what-coding-bootcamps-dont-teach-c71c3182f11'">
                         <div class="portfolio-wrapper">
@@ -237,24 +253,13 @@
                         <div class="portfolio-link photo" href="assets/images/docker.jpg"></div>
                     </div>
 
-                    <div class="portfolio-item js-tilt branding" onclick="window.location.href='https://mbogard.com/music'">
+                    <div class="portfolio-item js-tilt branding" onclick="window.location.href='https://mbogard.com/404'">
                         <div class="portfolio-wrapper">
-                            <div class="portfolio-img-wrap" data-background="./assets/images/toInfinity.jpg"></div>
+                            <div class="portfolio-img-wrap" data-background="./assets/images/fargo.jpg"></div>
                             <div class="portfolio-overlay"></div>
                             <div class="portfolio-caption">
-                                <h5 class="portfolio-title">Personal Music Album</h5>
-                            </div>
-                        </div>
-                        <div class="portfolio-link photo" href="./assets/images/toInfinity.jpg"></div>
-                    </div>
-
-                    <div class="portfolio-item js-tilt branding" onclick="window.location.href='https://github.com/BogieBogard/Node.js-and-MySQL'">
-                        <div class="portfolio-wrapper">
-                            <div class="portfolio-img-wrap" data-background="./assets/images/nodejsStylish.png"></div>
-                            <div class="portfolio-overlay"></div>
-                            <div class="portfolio-caption">
-                                <h5 class="portfolio-title">Node.js and MySQL</h5>
-                                <h6 class="portfolio-subtitle">Tracking business data</h6>
+                                <h5 class="portfolio-title">The best 404 page</h5>
+                                <h6 class="portfolio-subtitle">Not mine, open-source on codepen.io</h6>
                             </div>
                         </div>
                         <div class="portfolio-link photo" href="./assets/images/nodejsStylish.png"></div>
