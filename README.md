@@ -1,2 +1,2 @@
 # Personal Portfolio
-© 2019 Matthew Bogard. All Rights Reserved.
+© 2018-Present Matthew Bogard. All Rights Reserved.
