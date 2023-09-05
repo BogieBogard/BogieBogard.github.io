@@ -4,7 +4,7 @@
 
 /* Begin Self Typing Developer */
 
-#selfTypingText {
+.selfTypingText {
   font-size: 12pt;
   letter-spacing: unset;
 }
