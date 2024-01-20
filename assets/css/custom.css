@@ -11,6 +11,14 @@
 
 /* End Self Typing Developer */
 
+.m-b-15 {
+  padding-top: 45px;
+}
+
+.removeSpaceForMobileText {
+  margin-bottom: 20px !important;
+}
+
 /* Add text "Double tap 'Download Resume' to view */
 @media only screen and (min-width: 550px) {
   .mobileDownloadResumeText {
@@ -49,6 +57,10 @@
   }
   .paddingForMobileDisplay2 {
     padding-bottom: 70px;
+  }
+
+  .m-b-15 {
+    padding-top: 0px;
   }
 }
 
