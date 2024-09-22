@@ -53,17 +53,17 @@ iframe {
 }
 
 ::-moz-selection {
-    background: rgba(228, 25, 25, .9);
+    background: #0b90ef;
     color: #fff;
 }
 
 ::-webkit-selection {
-    background: rgba(228, 25, 25, .9);
+    background: #0b90ef;
     color: #fff;
 }
 
 ::selection {
-    background: rgba(228, 25, 25, .9);
+    background: #0b90ef;
     color: #fff;
 }
 
