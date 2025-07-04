@@ -597,6 +597,11 @@
   color: white !important;
 }
 
+/* Add significant padding below the Drive button in hero section */
+.cot-demo-btn[href="http://mbogard.com/fun/"] {
+  margin-bottom: 200px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .cot-container {
