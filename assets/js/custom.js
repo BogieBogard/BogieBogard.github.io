@@ -100,44 +100,52 @@ function showCotDemo() {
                 </div>
                 <div class="cot-modal-body">
                     <div class="demo-example">
-                        <h3>Example Problem: "What's 15% of 240?"</h3>
+                        <h3>Two-Agent Iteration: "Explain machine learning to a 10-year-old"</h3>
                         <div class="reasoning-steps">
-                            <div class="step-demo" id="step1">
+                            <div class="step-demo gpt-step" id="step1">
                                 <div class="step-header">
-                                    <span class="step-icon">🔍</span>
-                                    <strong>Step 1: Problem Analysis</strong>
+                                    <span class="step-icon">🤖</span>
+                                    <strong>GPT Agent - Initial Response</strong>
                                 </div>
-                                <p class="step-content">I need to calculate 15% of 240. This is a percentage calculation.</p>
+                                <p class="step-content">"Machine learning is a subset of artificial intelligence that involves training algorithms on data to make predictions or decisions without being explicitly programmed for every scenario."</p>
                             </div>
                             
-                            <div class="step-demo" id="step2" style="display: none;">
+                            <div class="step-demo manager-step" id="step2" style="display: none;">
                                 <div class="step-header">
-                                    <span class="step-icon">🧮</span>
-                                    <strong>Step 2: Method Selection</strong>
+                                    <span class="step-icon">👨‍💼</span>
+                                    <strong>Managing Agent - Feedback</strong>
                                 </div>
-                                <p class="step-content">15% = 15/100 = 0.15, so I need to multiply 240 × 0.15</p>
+                                <p class="step-content">"Too complex for a 10-year-old. Use simple analogies, avoid technical terms like 'algorithms' and 'subset'. Make it relatable to their world - pets, games, or toys."</p>
                             </div>
                             
-                            <div class="step-demo" id="step3" style="display: none;">
+                            <div class="step-demo gpt-step" id="step3" style="display: none;">
                                 <div class="step-header">
-                                    <span class="step-icon">⚡</span>
-                                    <strong>Step 3: Calculation</strong>
+                                    <span class="step-icon">�</span>
+                                    <strong>GPT Agent - Iteration 2</strong>
                                 </div>
-                                <p class="step-content">240 × 0.15 = 240 × (10 + 5)/100 = 24 + 12 = 36</p>
+                                <p class="step-content">"Machine learning is like teaching a computer to recognize patterns, the same way you learned to tell the difference between cats and dogs by seeing lots of pictures of both."</p>
                             </div>
                             
-                            <div class="step-demo" id="step4" style="display: none;">
+                            <div class="step-demo manager-step" id="step4" style="display: none;">
                                 <div class="step-header">
-                                    <span class="step-icon">✅</span>
-                                    <strong>Step 4: Verification</strong>
+                                    <span class="step-icon">👨‍💼</span>
+                                    <strong>Managing Agent - Further Refinement</strong>
                                 </div>
-                                <p class="step-content">36 ÷ 240 = 0.15 = 15% ✓</p>
+                                <p class="step-content">"Good improvement! Now add a concrete example they can relate to. Maybe Netflix recommendations or how phones recognize their face?"</p>
+                            </div>
+                            
+                            <div class="step-demo final-step" id="step5" style="display: none;">
+                                <div class="step-header">
+                                    <span class="step-icon">✨</span>
+                                    <strong>Final Refined Output</strong>
+                                </div>
+                                <p class="step-content">"Machine learning is like teaching a computer to be really good at guessing! Just like you learned to recognize your friends by seeing them many times, computers learn by looking at tons of examples. That's how Netflix knows what shows you might like, or how your phone recognizes your face to unlock!"</p>
                             </div>
                         </div>
                         
                         <div class="final-answer" id="finalAnswer" style="display: none;">
-                            <h4>Final Answer: 36</h4>
-                            <p>The model showed its reasoning step-by-step, making the solution transparent and verifiable.</p>
+                            <h4>Automatic Iteration Complete!</h4>
+                            <p>The two agents collaborated to transform a technical explanation into something perfectly suited for a young audience - all automatically!</p>
                         </div>
                         
                         <div class="demo-controls">
@@ -218,12 +226,26 @@ function showCotDemo() {
         }
         
         .step-demo {
-            background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             padding: 20px;
             margin: 15px 0;
-            border-left: 4px solid #4fc3f7;
+            border-left: 4px solid;
             animation: fadeInUp 0.5s ease;
+        }
+        
+        .gpt-step {
+            background: rgba(79, 195, 247, 0.1);
+            border-left-color: #4fc3f7;
+        }
+        
+        .manager-step {
+            background: rgba(255, 152, 0, 0.1);
+            border-left-color: #ff9800;
+        }
+        
+        .final-step {
+            background: rgba(76, 175, 80, 0.1);
+            border-left-color: #4caf50;
         }
         
         .step-header {
@@ -302,11 +324,11 @@ function showCotDemo() {
 }
 
 function nextStep() {
-    if (window.currentDemoStep <= 4) {
+    if (window.currentDemoStep <= 5) {
         document.getElementById(`step${window.currentDemoStep}`).style.display = 'block';
         window.currentDemoStep++;
         
-        if (window.currentDemoStep > 4) {
+        if (window.currentDemoStep > 5) {
             document.getElementById('finalAnswer').style.display = 'block';
             document.querySelector('.demo-step-btn').style.display = 'none';
             document.querySelector('.demo-reset-btn').style.display = 'inline-block';
@@ -316,7 +338,7 @@ function nextStep() {
 
 function resetDemo() {
     // Hide all steps and final answer
-    for (let i = 1; i <= 4; i++) {
+    for (let i = 1; i <= 5; i++) {
         document.getElementById(`step${i}`).style.display = 'none';
     }
     document.getElementById('finalAnswer').style.display = 'none';

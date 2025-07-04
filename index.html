@@ -175,36 +175,36 @@
                                     
                                     <!-- Interactive Thought Process -->
                                     <div class="cot-thinking-process">
-                                        <div class="thought-bubble thought-1 wow fadeInLeft" data-wow-delay="0.9s">
+                                        <div class="thought-bubble agent-bubble gpt-agent wow fadeInLeft" data-wow-delay="0.9s">
                                             <div class="bubble-content">
-                                                <span class="step-number">1</span>
-                                                <p>Problem Analysis</p>
+                                                <div class="agent-badge gpt-badge">GPT Agent</div>
+                                                <p>Initial Response</p>
                                                 <div class="code-snippet">
-                                                    <code>analyze_context(query)</code>
+                                                    <code>generate_initial_response(query)</code>
                                                 </div>
                                             </div>
                                         </div>
                                         
-                                        <div class="thought-arrow arrow-1 wow fadeIn" data-wow-delay="1.2s">→</div>
+                                        <div class="thought-arrow arrow-1 wow fadeIn" data-wow-delay="1.2s">⇄</div>
                                         
-                                        <div class="thought-bubble thought-2 wow fadeInUp" data-wow-delay="1.5s">
+                                        <div class="thought-bubble agent-bubble manager-agent wow fadeInUp" data-wow-delay="1.5s">
                                             <div class="bubble-content">
-                                                <span class="step-number">2</span>
-                                                <p>Reasoning Steps</p>
+                                                <div class="agent-badge manager-badge">Managing Agent</div>
+                                                <p>Feedback & Iteration</p>
                                                 <div class="code-snippet">
-                                                    <code>generate_reasoning_chain()</code>
+                                                    <code>analyze_and_improve(response)</code>
                                                 </div>
                                             </div>
                                         </div>
                                         
                                         <div class="thought-arrow arrow-2 wow fadeIn" data-wow-delay="1.8s">→</div>
                                         
-                                        <div class="thought-bubble thought-3 wow fadeInRight" data-wow-delay="2.1s">
+                                        <div class="thought-bubble agent-bubble final-output wow fadeInRight" data-wow-delay="2.1s">
                                             <div class="bubble-content">
-                                                <span class="step-number">3</span>
-                                                <p>Solution Synthesis</p>
+                                                <div class="agent-badge final-badge">Refined Output</div>
+                                                <p>Collaborative Result</p>
                                                 <div class="code-snippet">
-                                                    <code>synthesize_answer(steps)</code>
+                                                    <code>deliver_refined_solution()</code>
                                                 </div>
                                             </div>
                                         </div>
@@ -219,24 +219,42 @@
                                         <div class="neural-connection conn-2"></div>
                                     </div>
                                     
-                                    <!-- Interactive Demo Button -->
-                                    <div class="cot-demo-section wow fadeInUp" data-wow-delay="2.7s">
-                                        <div class="demo-stats">
-                                            <div class="stat-item">
-                                                <span class="stat-number">95%</span>
-                                                <span class="stat-label">Reasoning Accuracy</span>
+                                    <!-- Live Example Section -->
+                                    <div class="cot-example-section wow fadeInUp" data-wow-delay="2.7s">
+                                        <div class="example-header">
+                                            <h3>Automatic Iteration in Action</h3>
+                                            <p>Watch how the two agents collaborate to refine responses</p>
+                                        </div>
+                                        
+                                        <div class="conversation-example">
+                                            <div class="user-query-box">
+                                                <strong>User:</strong> "Explain quantum computing to a beginner"
                                             </div>
-                                            <div class="stat-item">
-                                                <span class="stat-number">3.2s</span>
-                                                <span class="stat-label">Avg Response Time</span>
-                                            </div>
-                                            <div class="stat-item">
-                                                <span class="stat-number">10K+</span>
-                                                <span class="stat-label">Training Examples</span>
+                                            
+                                            <div class="agent-conversation">
+                                                <div class="agent-response gpt-response">
+                                                    <div class="agent-label">🤖 GPT Agent</div>
+                                                    <p>"Quantum computing uses quantum bits that can be 0 and 1 simultaneously..."</p>
+                                                </div>
+                                                
+                                                <div class="iteration-arrow">↓</div>
+                                                
+                                                <div class="agent-response manager-response">
+                                                    <div class="agent-label">👨‍💼 Managing Agent</div>
+                                                    <p>"Too technical. Add analogies, explain superposition with coin flips. Include practical examples."</p>
+                                                </div>
+                                                
+                                                <div class="iteration-arrow">↓</div>
+                                                
+                                                <div class="agent-response refined-response">
+                                                    <div class="agent-label">✨ Refined Output</div>
+                                                    <p>"Imagine a coin spinning in the air - it's both heads and tails until it lands. Quantum bits work similarly, enabling breakthrough computing for drug discovery and cryptography."</p>
+                                                </div>
                                             </div>
                                         </div>
+                                        
                                         <button class="cot-demo-btn" onclick="showCotDemo()">
-                                            <span class="btn-text">Experience the Model</span>
+                                            <span class="btn-text">See Full Interaction</span>
                                             <div class="btn-glow"></div>
                                         </button>
                                     </div>
