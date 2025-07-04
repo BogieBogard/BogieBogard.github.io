@@ -599,7 +599,12 @@
 
 /* Add significant padding below the Drive button in hero section */
 .cot-demo-btn[href="http://mbogard.com/fun/"] {
-  margin-bottom: 200px;
+  margin-bottom: 150px;
+}
+
+/* Add padding below the See Full Interaction button */
+.cot-demo-btn[onclick="showCotDemo()"] {
+  margin-bottom: 80px;
 }
 
 /* Responsive Design */
