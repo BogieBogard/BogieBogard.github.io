@@ -221,9 +221,11 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(135deg, 
-    rgba(13, 71, 161, 0.8) 0%, 
-    rgba(26, 35, 126, 0.7) 50%, 
-    rgba(74, 20, 140, 0.8) 100%);
+    rgba(0, 0, 0, 0.95) 0%, 
+    rgba(13, 71, 161, 0.98) 25%, 
+    rgba(26, 35, 126, 0.95) 50%, 
+    rgba(74, 20, 140, 0.98) 75%, 
+    rgba(0, 0, 0, 0.95) 100%);
   z-index: 1;
 }
 
@@ -271,7 +273,7 @@
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 15px;
-  text-transform: uppercase;
+  text-transform: none !important;
   letter-spacing: 1px;
   box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
 }
@@ -568,6 +570,9 @@
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
   animation: gradientShift 4s ease infinite;
+  min-width: 320px;
+  padding-left: 60px;
+  padding-right: 60px;
 }
 
 @keyframes gradientShift {
@@ -585,22 +590,11 @@
 }
 
 .btn-glow {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  transition: left 0.5s ease;
+  display: none !important;
 }
 
-.cot-demo-btn:hover .btn-glow {
-  left: 100%;
-}
-
-.btn-text {
-  position: relative;
-  z-index: 1;
+.cot-demo-btn .btn-text {
+  color: white !important;
 }
 
 /* Responsive Design */
