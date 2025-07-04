@@ -106,12 +106,17 @@
                         <p class="selfTypingText" style="margin-top: 60px;">
                             Explore my work project history in a fun and interactive way: 
                         </p>
-                        <a class="btn btn-brand" href="http://mbogard.com/fun/"><span>mbogard.com/fun</span></a>
+                        <div style="margin-bottom: 200px;">
+                            <a class="cot-demo-btn" href="http://mbogard.com/fun/">
+                                <span class="btn-text">Start</span>
+                                <div class="btn-glow"></div>
+                            </a>
+                        </div>
 
                         <!-- End New Page Promotion -->
                         
                         <!-- LinkedIn and GitHub -->
-                        <ul class="social-icons linkedInAndGitHub">
+                        <!-- <ul class="social-icons linkedInAndGitHub">
                             <li class="linkedInAndGitHub">
                                 <a class="linkedInAndGitHub" href="https://github.com/BogieBogard">
                                     <h6><b>GitHub</b></h6>
@@ -126,7 +131,7 @@
                             </li>
                             <li class="linkedInAndGitHub"><a class="linkedInAndGitHub" href="https://www.linkedin.com/in/matthew-bogard"><i
 										class="fa fa-linkedin-square linkedInAndGitHub"></i></a></li>
-                        </ul>
+                        </ul> -->
                         <img loading="lazy" id="iphoneImage" src="assets/images/iphone-5.png" alt="">
 
                     </div>
@@ -137,6 +142,104 @@
         <!-- Featured Projects -->
         <section class="module-slides" id="portfolio">
             <ul class="slides-container">
+                <!-- Enhanced Chain-of-Thought Model Slide - First Position -->
+                <li class="cot-slide bg-dark bg-dark-20">
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1674027444485-cec3da58eef4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Neural Network Chain-of-Thought AI Background">
+                    <div class="cot-overlay"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="cot-container">
+                                    <!-- Main Title -->
+                                    <div class="cot-header">
+                                        <h1 class="cot-badge wow fadeInDown">In March 2024 I built and shipped a chain-of-thought reasoning model, nine months before OpenAI released their first reasoning model, o1</h1>
+                                        <!-- <h5 class="cot-title wow fadeInUp" data-wow-delay="0.3s">Chain-of-Thought Reasoning Model</h1> -->
+                                        <!-- <p class="cot-subtitle wow fadeInUp" data-wow-delay="0.6s">Chain-of-Thought Reasoning Model</p> -->
+                                        <p class="cot-subtitle wow fadeInUp" data-wow-delay="0.6s">Here's how it worked:</p>
+                                    </div>
+                                    
+                                    <!-- Interactive Thought Process -->
+                                    <div class="cot-thinking-process">
+                                        <div class="thought-bubble agent-bubble gpt-agent wow fadeInLeft" data-wow-delay="0.9s">
+                                            <div class="bubble-content">
+                                                <div class="agent-badge gpt-badge">GPT Agent</div>
+                                                <p>Initial Response</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="thought-arrow arrow-1 wow fadeIn" data-wow-delay="1.2s">⇄</div>
+                                        
+                                        <div class="thought-bubble agent-bubble manager-agent wow fadeInUp" data-wow-delay="1.5s">
+                                            <div class="bubble-content">
+                                                <div class="agent-badge manager-badge">Managing Agent</div>
+                                                <p>Feedback & Iteration</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="thought-arrow arrow-2 wow fadeIn" data-wow-delay="1.8s">→</div>
+                                        
+                                        <div class="thought-bubble agent-bubble final-output wow fadeInRight" data-wow-delay="2.1s">
+                                            <div class="bubble-content">
+                                                <div class="agent-badge final-badge">Refined Output</div>
+                                                <p>Collaborative Result</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Neural Network Visualization -->
+                                    <div class="cot-neural-viz wow fadeIn" data-wow-delay="2.4s">
+                                        <div class="neural-node node-1"></div>
+                                        <div class="neural-node node-2"></div>
+                                        <div class="neural-node node-3"></div>
+                                        <div class="neural-connection conn-1"></div>
+                                        <div class="neural-connection conn-2"></div>
+                                    </div>
+                                    
+                                    <!-- Live Example Section -->
+                                    <div class="cot-example-section wow fadeInUp" data-wow-delay="2.7s">
+                                        <div class="example-header">
+                                            <h3>Automatic Iteration in Action</h3>
+                                            <p>Watch how the two agents collaborate to refine responses</p>
+                                        </div>
+                                        
+                                        <div class="conversation-example">
+                                            <div class="user-query-box">
+                                                <strong>User:</strong> "Explain quantum computing to a beginner"
+                                            </div>
+                                            
+                                            <div class="agent-conversation">
+                                                <div class="agent-response gpt-response">
+                                                    <div class="agent-label">🤖 GPT Agent</div>
+                                                    <p>"Quantum computing uses quantum bits that can be 0 and 1 simultaneously..."</p>
+                                                </div>
+                                                
+                                                <div class="iteration-arrow">↓</div>
+                                                
+                                                <div class="agent-response manager-response">
+                                                    <div class="agent-label">👨‍💼 Managing Agent</div>
+                                                    <p>"Too technical. Add analogies, explain superposition with coin flips. Include practical examples."</p>
+                                                </div>
+                                                
+                                                <div class="iteration-arrow">↓</div>
+                                                
+                                                <div class="agent-response refined-response">
+                                                    <div class="agent-label">✨ Refined Output</div>
+                                                    <p>"Imagine a coin spinning in the air - it's both heads and tails until it lands. Quantum bits work similarly, enabling breakthrough computing for drug discovery and cryptography."</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <button class="cot-demo-btn" onclick="showCotDemo()">
+                                            <span class="btn-text">See Full Interaction</span>
+                                            <div class="btn-glow"></div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
                 <li><img loading="lazy" src="assets/images/awsTechnologies.png" alt="">
                     <div class="container">
                         <div class="row">
@@ -147,6 +250,9 @@
                         </div>
                     </div>
                 </li>
+                
+
+                
                 <li class="bg-dark bg-dark-30"><img loading="lazy" src="assets/images/agileMethodology.png" alt="">
                     <div class="container">
                         <div class="row">
@@ -157,6 +263,7 @@
                         </div>
                     </div>
                 </li>
+                
                 <!-- <li class="bg-dark bg-gradient"><img loading="lazy" src="./assets/images/robot-image.jpeg" alt="Tracking Congress Background Image"> -->
                     <!-- <div class="container" onclick="window.location.href='https://ai.mbogard.com/'"> -->
                         <!-- <div class="row"> -->
