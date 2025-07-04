@@ -204,3 +204,368 @@
     display: none !important;
   }
 }
+
+/* Chain-of-Thought Model Slide Styles */
+.cot-slide {
+  position: relative;
+  overflow: hidden;
+}
+
+.cot-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(13, 71, 161, 0.8) 0%, 
+    rgba(26, 35, 126, 0.7) 50%, 
+    rgba(74, 20, 140, 0.8) 100%);
+  z-index: 1;
+}
+
+.cot-container {
+  position: relative;
+  z-index: 2;
+  padding: 60px 0;
+}
+
+/* Header Section */
+.cot-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.cot-badge {
+  display: inline-block;
+  background: linear-gradient(45deg, #ff6b6b, #ffa500);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.cot-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 15px;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(45deg, #ffffff, #e3f2fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cot-subtitle {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0;
+  font-weight: 300;
+}
+
+/* Thinking Process Section */
+.cot-thinking-process {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 50px 0;
+  gap: 20px;
+}
+
+.thought-bubble {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 25px;
+  min-width: 200px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.thought-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid rgba(255, 255, 255, 0.95);
+}
+
+.thought-bubble:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.bubble-content {
+  text-align: center;
+}
+
+.step-number {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+  line-height: 30px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.bubble-content p {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.code-snippet {
+  background: #1e1e1e;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-top: 10px;
+}
+
+.code-snippet code {
+  color: #4fc3f7;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.thought-arrow {
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: bold;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Neural Network Visualization */
+.cot-neural-viz {
+  position: relative;
+  height: 100px;
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.neural-node {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #4fc3f7, #29b6f6);
+  position: relative;
+  margin: 0 30px;
+  box-shadow: 0 0 20px rgba(79, 195, 247, 0.6);
+  animation: neuralPulse 3s infinite ease-in-out;
+}
+
+.neural-node.node-2 {
+  animation-delay: 0.5s;
+}
+
+.neural-node.node-3 {
+  animation-delay: 1s;
+}
+
+@keyframes neuralPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(79, 195, 247, 0.6); }
+  50% { transform: scale(1.2); box-shadow: 0 0 30px rgba(79, 195, 247, 0.9); }
+}
+
+.neural-connection {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(90deg, #4fc3f7, #29b6f6);
+  top: 50%;
+  animation: dataFlow 2s infinite ease-in-out;
+}
+
+.neural-connection.conn-1 {
+  left: 25%;
+  width: 25%;
+}
+
+.neural-connection.conn-2 {
+  right: 25%;
+  width: 25%;
+  animation-delay: 0.5s;
+}
+
+@keyframes dataFlow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Demo Section */
+.cot-demo-section {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.demo-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: 700;
+  color: #4fc3f7;
+  text-shadow: 0 2px 10px rgba(79, 195, 247, 0.5);
+}
+
+.stat-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Interactive Demo Button */
+.cot-demo-btn {
+  position: relative;
+  background: linear-gradient(45deg, #667eea, #764ba2, #6B73FF, #9A9CE2);
+  background-size: 300% 300%;
+  border: none;
+  border-radius: 50px;
+  padding: 15px 40px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.cot-demo-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+}
+
+.cot-demo-btn:active {
+  transform: translateY(-1px);
+}
+
+.btn-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.cot-demo-btn:hover .btn-glow {
+  left: 100%;
+}
+
+.btn-text {
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cot-title {
+    font-size: 32px;
+  }
+  
+  .cot-thinking-process {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .thought-arrow {
+    transform: rotate(90deg);
+    margin: 10px 0;
+  }
+  
+  .thought-bubble {
+    min-width: 250px;
+  }
+  
+  .demo-stats {
+    gap: 20px;
+  }
+  
+  .neural-node {
+    margin: 0 15px;
+  }
+  
+  .cot-container {
+    padding: 40px 0;
+  }
+  
+  .cot-demo-section {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cot-title {
+    font-size: 24px;
+  }
+  
+  .cot-subtitle {
+    font-size: 16px;
+  }
+  
+  .thought-bubble {
+    min-width: 200px;
+    padding: 20px;
+  }
+  
+  .demo-stats {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .stat-number {
+    font-size: 24px;
+  }
+  
+  .cot-demo-btn {
+    padding: 12px 30px;
+    font-size: 14px;
+  }
+}
