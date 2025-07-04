@@ -607,6 +607,23 @@
   margin-bottom: 80px;
 }
 
+/* Override uppercase text transform for specific slides */
+/* Larger font for top line headings in slides */
+.module-slides h1.h5.removeUppercase {
+    font-size: 16px !important;
+}
+
+/* Always override uppercase and letter spacing for any heading with .removeUppercase in .module-slides */
+.module-slides h1.removeUppercase,
+.module-slides h2.removeUppercase,
+.module-slides h3.removeUppercase,
+.module-slides h4.removeUppercase,
+.module-slides h5.removeUppercase,
+.module-slides h6.removeUppercase {
+    text-transform: none !important;
+    letter-spacing: normal !important;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .cot-container {
