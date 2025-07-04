@@ -209,6 +209,9 @@
 .cot-slide {
   position: relative;
   overflow: hidden;
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
 }
 
 .cot-overlay {
@@ -227,13 +230,36 @@
 .cot-container {
   position: relative;
   z-index: 2;
-  padding: 60px 0;
+  padding: 40px 0;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Custom scrollbar for webkit browsers */
+.cot-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cot-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.cot-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.cot-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
 
 /* Header Section */
 .cot-header {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .cot-badge {
@@ -275,15 +301,15 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin: 50px 0;
-  gap: 20px;
+  margin: 30px 0;
+  gap: 15px;
 }
 
 .thought-bubble {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
-  padding: 25px;
-  min-width: 200px;
+  padding: 20px;
+  min-width: 180px;
   position: relative;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
@@ -374,21 +400,21 @@
 /* Neural Network Visualization */
 .cot-neural-viz {
   position: relative;
-  height: 100px;
-  margin: 40px 0;
+  height: 60px;
+  margin: 25px 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .neural-node {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: linear-gradient(45deg, #4fc3f7, #29b6f6);
   position: relative;
-  margin: 0 30px;
-  box-shadow: 0 0 20px rgba(79, 195, 247, 0.6);
+  margin: 0 25px;
+  box-shadow: 0 0 15px rgba(79, 195, 247, 0.6);
   animation: neuralPulse 3s infinite ease-in-out;
 }
 
@@ -432,7 +458,7 @@
 /* Example Section */
 .cot-example-section {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .example-header h3 {
@@ -579,13 +605,19 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .cot-container {
+    padding: 20px 15px;
+    height: 100vh;
+  }
+  
   .cot-title {
-    font-size: 32px;
+    font-size: 28px;
   }
   
   .cot-thinking-process {
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
+    margin: 20px 0;
   }
   
   .thought-arrow {
@@ -594,56 +626,68 @@
   }
   
   .thought-bubble {
-    min-width: 250px;
+    min-width: 200px;
+    padding: 15px;
   }
   
   .conversation-example {
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 15px;
+    margin-bottom: 15px;
   }
   
   .neural-node {
     margin: 0 15px;
-  }
-  
-  .cot-container {
-    padding: 40px 0;
+    width: 25px;
+    height: 25px;
   }
   
   .cot-example-section {
-    margin-top: 30px;
+    margin-top: 20px;
   }
   
   .example-header h3 {
     font-size: 20px;
   }
+  
+  .cot-header {
+    margin-bottom: 20px;
+  }
+  
+  .cot-neural-viz {
+    height: 50px;
+    margin: 15px 0;
+  }
 }
 
 @media (max-width: 480px) {
+  .cot-container {
+    padding: 15px 10px;
+  }
+  
   .cot-title {
-    font-size: 24px;
+    font-size: 22px;
   }
   
   .cot-subtitle {
-    font-size: 16px;
+    font-size: 14px;
   }
   
   .thought-bubble {
-    min-width: 200px;
-    padding: 20px;
-  }
-  
-  .conversation-example {
+    min-width: 180px;
     padding: 15px;
   }
   
+  .conversation-example {
+    padding: 12px;
+  }
+  
   .user-query-box {
-    padding: 12px 15px;
+    padding: 10px 12px;
     font-size: 14px;
   }
   
   .agent-response {
-    padding: 12px 15px;
+    padding: 10px 12px;
     font-size: 13px;
   }
   
@@ -652,7 +696,18 @@
   }
   
   .cot-demo-btn {
-    padding: 12px 30px;
+    padding: 10px 25px;
     font-size: 14px;
+  }
+  
+  .cot-thinking-process {
+    gap: 15px;
+    margin: 15px 0;
+  }
+  
+  .neural-node {
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
   }
 }
