@@ -214,6 +214,29 @@
   align-items: flex-start;
 }
 
+/* Featured Project Section (Standalone) */
+.module-featured-project {
+  position: relative;
+  min-height: 100vh;
+  overflow: visible;
+  padding: 0;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+}
+
+.module-featured-project img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
 .cot-overlay {
   position: absolute;
   top: 0;
@@ -233,10 +256,21 @@
   position: relative;
   z-index: 2;
   padding: 40px 0;
+  width: 100%;
+}
+
+/* Specific styling for cot-container in carousel slides */
+.module-slides .cot-container {
   height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
-  width: 100%;
+}
+
+/* Specific styling for cot-container in standalone section */
+.module-featured-project .cot-container {
+  min-height: auto;
+  padding: 60px 0;
+  overflow: visible;
 }
 
 /* Custom scrollbar for webkit browsers */
@@ -652,9 +686,13 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .cot-container {
+  .module-slides .cot-container {
     padding: 20px 15px;
     height: 100vh;
+  }
+  
+  .module-featured-project .cot-container {
+    padding: 40px 15px;
   }
   
   .cot-title {
@@ -707,8 +745,12 @@
 }
 
 @media (max-width: 480px) {
-  .cot-container {
+  .module-slides .cot-container {
     padding: 15px 10px;
+  }
+  
+  .module-featured-project .cot-container {
+    padding: 30px 10px;
   }
   
   .cot-title {
