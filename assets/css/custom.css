@@ -85,6 +85,10 @@
   margin-top: 20px;
 }
 
+.module-header h1.h6 {
+  letter-spacing: 6px;
+}
+
 /* Minimal Footer Styles */
 .footer {
   background: #000000;
@@ -181,6 +185,340 @@
   }
 }
 
+.hero-intro {
+  max-width: 720px;
+  margin: 0 auto 35px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.hero-cta-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 25px 0 35px;
+}
+
+.btn.btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #fff;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.btn.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.hero-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(140px, 1fr));
+  gap: 20px;
+  margin-bottom: 80px;
+  justify-items: center;
+}
+
+.metric-card {
+  background: rgba(11, 144, 239, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px 25px;
+  text-align: center;
+  max-width: 220px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+.metric-value {
+  display: block;
+  font-size: 32px;
+  font-weight: 700;
+  color: #0b90ef;
+  margin-bottom: 6px;
+}
+
+.metric-label {
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  max-width: 720px;
+  margin: 0 auto 40px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.module.bg-dark .section-subtitle,
+.module-featured-project .section-subtitle,
+.contact-module .section-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.audit-section {
+  padding: 80px 0;
+}
+
+.audit-card-row {
+  gap: 25px;
+}
+
+.audit-card {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 30px;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.audit-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.audit-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.highlights-module {
+  padding: 80px 0;
+  background: linear-gradient(135deg, rgba(11, 144, 239, 0.08), rgba(255, 255, 255, 0));
+}
+
+.highlight-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 35px 30px;
+  height: 100%;
+  box-shadow: 0 15px 35px rgba(11, 144, 239, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.highlight-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  border: 1px solid rgba(11, 144, 239, 0.15);
+  pointer-events: none;
+}
+
+.highlight-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(11, 144, 239, 0.2);
+}
+
+.highlight-icon {
+  font-size: 36px;
+  margin-bottom: 18px;
+}
+
+.highlight-card h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.highlight-card p {
+  color: rgba(0, 0, 0, 0.65);
+  line-height: 1.6;
+}
+
+.skill-module {
+  padding: 80px 0;
+}
+
+.skill-category {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  margin-bottom: 25px;
+}
+
+.skill-category h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.skill-chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(11, 144, 239, 0.12);
+  color: #0b90ef;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+}
+
+.timeline-module {
+  padding: 80px 0;
+  background: #0f172a;
+  color: #fff;
+}
+
+.timeline {
+  position: relative;
+  margin-top: 30px;
+  padding-left: 30px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(11, 144, 239, 0.8));
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 35px;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -2px;
+  top: 6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #0b90ef;
+  box-shadow: 0 0 0 4px rgba(11, 144, 239, 0.25);
+}
+
+.timeline-content {
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: 16px;
+  padding: 22px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.timeline-year {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 2px;
+}
+
+.timeline-content h3 {
+  font-size: 22px;
+  margin: 10px 0;
+}
+
+.timeline-content p {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+}
+
+.contact-module {
+  background: #0b90ef;
+  color: #fff;
+  padding: 70px 0;
+}
+
+.contact-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 20px;
+}
+
+.contact-actions .btn {
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 992px) {
+  .hero-metrics {
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+  }
+
+  .contact-actions {
+    align-items: stretch;
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .module-header h1.h1 {
+    letter-spacing: 6px;
+    margin-right: 0;
+    font-size: 28px;
+  }
+
+  .hero-intro {
+    font-size: 16px;
+  }
+
+  .hero-cta-group {
+    justify-content: center;
+  }
+
+  .hero-metrics {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .audit-card-row {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .section-title {
+    font-size: 28px;
+  }
+
+  .section-subtitle {
+    font-size: 15px;
+  }
+
+  .audit-card,
+  .highlight-card,
+  .skill-category {
+    padding: 24px;
+  }
+
+  .contact-module {
+    text-align: center;
+  }
+
+  .contact-actions {
+    align-items: center;
+  }
+}
+
 @media (max-width: 480px) {
   .footer {
     padding: 25px 0;
@@ -194,14 +532,6 @@
   
   .social-icon i {
     font-size: 16px;
-  }
-}
-
-/* Hide the mobile menu toggle (hamburger) on screens 768px or less. 
-   This disables the mobile nav menu button for mobile users. */
-@media (max-width: 768px) {
-  .nav-toggle {
-    display: none !important;
   }
 }
 
