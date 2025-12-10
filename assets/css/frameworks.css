@@ -1,0 +1,112 @@
+
+/* Frameworks Grid Section Styles */
+.frameworks-grid-section {
+    background-color: #1b1b1f; /* Dark background matching the image */
+    padding: 60px 0;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    text-align: center;
+}
+
+.frameworks-grid-section h2 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #f6f6f7;
+    line-height: 1.2;
+}
+
+.frameworks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 12px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Responsive Grid adjustments to match the dense look */
+@media (min-width: 600px) {
+    .frameworks-grid {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 16px;
+    }
+}
+
+@media (min-width: 900px) {
+    .frameworks-grid {
+        grid-template-columns: repeat(10, 1fr); /* Force 10 columns for the desktop look */
+        gap: 20px;
+    }
+}
+
+.framework-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #202127; /* Slightly lighter dark for the tile */
+    border-radius: 8px;
+    aspect-ratio: 1; /* Make it square */
+    width: 100%;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    /* subtle border */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.framework-card img, 
+.framework-card svg {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+    z-index: 2;
+    transition: transform 0.3s ease;
+    filter: grayscale(0.2); /* Slightly muted by default */
+}
+
+/* Hover Effects */
+.framework-card:hover {
+    background-color: #2a2b32;
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px -5px var(--glow-color); /* Outer glow */
+}
+
+.framework-card:hover img,
+.framework-card:hover svg {
+    filter: grayscale(0);
+    transform: scale(1.1);
+}
+
+/* The Glow Effect using the CSS variable */
+.framework-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%; /* Larger than container to ensure full coverage */
+    height: 120%;
+    background: radial-gradient(circle at center, var(--glow-color) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0; /* Behind content */
+    filter: blur(15px);
+    pointer-events: none;
+}
+
+.framework-card:hover::before {
+    opacity: 0.4; /* Stronger visibility */
+}
+
+.framework-card img, 
+.framework-card svg {
+    /* ... existing styles ... */
+    z-index: 2; /* Ensure icon is above the glow */
+}
+
+/* Specific tweaks for SVGs to ensure they respect the container */
+.framework-card svg {
+    display: block;
+}
