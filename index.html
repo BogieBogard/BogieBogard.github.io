@@ -14,8 +14,39 @@
     <link rel="manifest" href="/favicon/site.webmanifest">
     <meta name="msapplication-config" content="/favicon/browserconfig.xml">
     <meta name="theme-color" content="#0b1424">
+
+    <!-- Critical inline CSS: webpack injects the real stylesheet via JS, so without
+         this the page paints white with unstyled, left-justified menu text for a
+         frame. This keeps a clean dark background + branded loader until ready. -->
+    <style>
+        html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #0b1424; overflow: hidden; }
+
+        /* Hide the HUD chrome until assets are loaded, then fade it in. */
+        body:not(.is-ready) .settings,
+        body:not(.is-ready) .site-toggle { opacity: 0; pointer-events: none; }
+        .settings, .site-toggle { transition: opacity 0.5s ease 0.15s; }
+
+        /* Full-screen loader shown over everything until the scene is ready. */
+        #app-loading {
+            position: fixed; inset: 0; z-index: 100; background: #0b1424;
+            display: flex; align-items: center; justify-content: center;
+            transition: opacity 0.6s ease;
+        }
+        #app-loading .mb {
+            font-family: 'Arial Black', Arial, sans-serif; font-weight: 900;
+            font-size: 56px; letter-spacing: -2px; color: #38bdf8;
+            animation: mb-pulse 1.4s ease-in-out infinite;
+        }
+        @keyframes mb-pulse {
+            0%, 100% { opacity: 0.35; transform: scale(0.96); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        body.is-ready #app-loading { opacity: 0; pointer-events: none; }
+    </style>
 </head>
 <body>
+
+    <div id="app-loading"><div class="mb">MB</div></div>
 
     <canvas class="canvas js-canvas"></canvas>
 
@@ -58,5 +89,5 @@
     <div class="threejs-journey is-hover-none js-threejs-journey">
     </div>
 
-<script type="text/javascript" src="bundle.cf7a7174bc74b98c2560.js"></script></body>
+<script type="text/javascript" src="bundle.5fc0de33ea778785c16a.js"></script></body>
 </html>
