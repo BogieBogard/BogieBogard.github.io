@@ -19,8 +19,7 @@
     if(window.AmbientPlayer) { return } // guard against double-inclusion
 
     var TRACKS = [
-        { src: '/ambient/warm-spot.mp3', title: 'Warm Spot', artist: 'Bosnow' },
-        { src: '/ambient/satie.mp3',     title: 'Satie',     artist: 'Oliver Massa' }
+        { src: '/ambient/warm-spot.mp3', title: 'Warm Spot', artist: 'Bosnow' }
     ]
 
     var TARGET_VOLUME = 0.32   // soft background bed
@@ -101,7 +100,7 @@
 
         var audio = new Audio()
         audio.src = TRACKS[state.index].src
-        audio.loop = false           // we hop to the next track on 'ended'
+        audio.loop = true            // single track, looped forever
         audio.preload = 'auto'
         audio.volume = 0
 
@@ -109,17 +108,6 @@
         audio.addEventListener('loadedmetadata', function ()
         {
             try { audio.currentTime = resumeOffset(audio.duration) } catch(e) {}
-        })
-
-        // When a track finishes, advance to the next one (alternates the two)
-        // for variety instead of looping a single piece forever.
-        audio.addEventListener('ended', function ()
-        {
-            state.index = (state.index + 1) % TRACKS.length
-            audio.src = TRACKS[state.index].src
-            audio.currentTime = 0
-            ls.setItem(KEY_TRACK, String(state.index))
-            audio.play().catch(function () {})
         })
 
         audio.addEventListener('timeupdate', function ()
