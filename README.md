@@ -12,3 +12,6 @@ This repo is served by GitHub Pages at **mbogard.com**.
 2. Copy the build into this repo's root (excluding source maps):
    `rsync -a --exclude='*.map' --exclude='.DS_Store' /path/to/drive-local/dist/ ./`
 3. Commit and push.
+
+If the Pages deploy job fails with "Deployment failed, try again later", it's a
+transient GitHub-side error — push any commit (like this one) to re-trigger it.
