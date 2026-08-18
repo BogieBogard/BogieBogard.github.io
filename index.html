@@ -15,6 +15,13 @@
     <meta name="msapplication-config" content="/favicon/browserconfig.xml">
     <meta name="theme-color" content="#0b1424">
 
+    <!-- Space Grotesk for every numeral and the panel heading, Space Mono for
+         uppercase system labels, Hanken Grotesk for body copy — the same three
+         faces the 2D site uses. Numerals are deliberately NOT mono. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=Space+Grotesk:wght@400;500&family=Space+Mono:wght@400;700&display=swap">
+
     <!-- Critical inline CSS: webpack injects the real stylesheet via JS, so without
          this the page paints white with unstyled, left-justified menu text for a
          frame. This keeps a clean dark background + branded loader until ready. -->
@@ -23,8 +30,10 @@
 
         /* Hide the HUD chrome until assets are loaded, then fade it in. */
         body:not(.is-ready) .settings,
-        body:not(.is-ready) .site-toggle { opacity: 0; pointer-events: none; }
-        .settings, .site-toggle { transition: opacity 0.5s ease 0.15s; }
+        body:not(.is-ready) .site-toggle,
+        body:not(.is-ready) .hud-time,
+        body:not(.is-ready) .pause-button { opacity: 0; pointer-events: none; }
+        .settings, .site-toggle, .hud-time, .pause-button { transition: opacity 0.5s ease 0.15s; }
 
         /* Full-screen loader shown over everything until the scene is ready. */
         #app-loading {
@@ -119,6 +128,89 @@
         <button class="chase-timer__toggle js-chase-toggle" type="button">Chase: On</button>
     </div>
 
+    <!-- Touch HUD. Replaces the chase-timer panel on phones: the run time as bare
+         text over the world, and one pause button that holds every setting.
+         Hidden on desktop, which keeps the gear, the panel and the 2D-site link. -->
+    <div class="hud-time js-hud-time">
+        <div class="hud-time__row">
+            <span class="hud-time__current js-hud-current">0.0s</span>
+            <span class="hud-time__best js-hud-best">BEST 0.0s</span>
+        </div>
+        <div class="hud-time__notice js-hud-notice"></div>
+    </div>
+
+    <button class="pause-button js-pause-button" type="button" aria-label="Pause">
+        <span class="pause-button__bar"></span>
+        <span class="pause-button__bar"></span>
+    </button>
+
+    <div class="pause js-pause" aria-hidden="true">
+        <div class="pause__scrim js-pause-scrim"></div>
+        <div class="pause-panel js-pause-panel" role="dialog" aria-modal="true" aria-label="Paused">
+            <div class="pause-panel__header">
+                <span class="pause-panel__title">Paused</span>
+                <span class="pause-panel__time js-pause-time">0.0s &middot; BEST 0.0s</span>
+            </div>
+            <div class="pause-panel__body">
+                <div class="pause-col pause-col--theme">
+                    <section class="pause-section">
+                        <div class="pause-label">Theme</div>
+                        <!-- Swatches are built from the live theme table so rift
+                             palettes earned at runtime appear here too. -->
+                        <div class="pause-swatches js-pause-themes"></div>
+                        <div class="pause-current js-pause-theme-name"></div>
+                    </section>
+                </div>
+                <div class="pause-col pause-col--vehicle">
+                    <!-- Both of these need the car, which only exists once the
+                         experience starts; PauseMenu unhides them then. -->
+                    <section class="pause-section js-pause-vehicle-section" hidden>
+                        <div class="pause-label">Vehicle</div>
+                        <div class="pause-chips js-pause-vehicles"></div>
+                        <div class="pause-credit js-pause-vehicle-credit"></div>
+                    </section>
+                    <section class="pause-section js-pause-speed-section" hidden>
+                        <div class="pause-row">
+                            <span class="pause-label">Car Speed</span>
+                            <span class="pause-value js-pause-speed-value">1.00&times;</span>
+                        </div>
+                        <div class="pause-slider">
+                            <div class="pause-slider__track">
+                                <div class="pause-slider__fill js-pause-speed-fill"></div>
+                            </div>
+                            <input class="pause-slider__input js-pause-speed" type="range" min="0.5" max="2" step="0.05" value="1" aria-label="Car speed">
+                        </div>
+                    </section>
+                </div>
+                <div class="pause-col pause-col--toggles">
+                    <section class="pause-section">
+                        <div class="pause-row">
+                            <span class="pause-label">Chase</span>
+                            <div class="pause-toggle js-pause-chase">
+                                <button class="pause-toggle__button" type="button" data-value="on">On</button>
+                                <button class="pause-toggle__button" type="button" data-value="off">Off</button>
+                            </div>
+                        </div>
+                        <div class="pause-row">
+                            <span class="pause-label">Music</span>
+                            <div class="pause-toggle js-pause-music">
+                                <button class="pause-toggle__button" type="button" data-value="on">On</button>
+                                <button class="pause-toggle__button" type="button" data-value="off">Off</button>
+                            </div>
+                        </div>
+                        <div class="pause-credit">
+                            &ldquo;Warm Spot&rdquo; &middot; Bosnow &middot; Music from Uppbeat
+                        </div>
+                    </section>
+                </div>
+                <div class="pause-panel__footer">
+                    <button class="pause-resume js-pause-resume" type="button">Resume</button>
+                    <a class="pause-2d" href="/portfolio/">View 2D site &#8599;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Rift chrome. Each rift builds its own HUD panel into the body; these are
          the pieces every world shares. -->
     <div class="rift-prompt js-rift-prompt">Drive through the rift</div>
@@ -128,5 +220,5 @@
 
     
 
-<script type="text/javascript" src="bundle.a4994ad171b9f7c044ec.js"></script></body>
+<script type="text/javascript" src="bundle.5a9499d59093b46a6ad4.js"></script></body>
 </html>
