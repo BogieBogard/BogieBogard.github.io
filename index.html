@@ -29,11 +29,9 @@
         html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #0b1424; overflow: hidden; }
 
         /* Hide the HUD chrome until assets are loaded, then fade it in. */
-        body:not(.is-ready) .settings,
-        body:not(.is-ready) .site-toggle,
         body:not(.is-ready) .hud-time,
         body:not(.is-ready) .pause-button { opacity: 0; pointer-events: none; }
-        .settings, .site-toggle, .hud-time, .pause-button { transition: opacity 0.5s ease 0.15s; }
+        .hud-time, .pause-button { transition: opacity 0.5s ease 0.15s; }
 
         /* Full-screen loader shown over everything until the scene is ready. */
         #app-loading {
@@ -78,59 +76,9 @@
 
     <canvas class="canvas js-canvas"></canvas>
 
-    <div class="settings js-settings">
-        <button class="settings__gear js-settings-gear" type="button" aria-label="Settings" title="Settings">⚙</button>
-        <div class="settings__panel js-settings-panel">
-            <div class="settings__header">
-                <span class="settings__title">Settings</span>
-                <span class="settings__hint">drive &amp; explore</span>
-            </div>
-            <div class="settings__section">
-                <div class="settings__label">Theme</div>
-                <div class="settings__options js-theme-lab-options"></div>
-            </div>
-            <div class="settings__section">
-                <div class="settings__label">Vehicle</div>
-                <div class="settings__options js-vehicle-options"></div>
-                <div class="settings__credit js-vehicle-credit"></div>
-            </div>
-            <div class="settings__section">
-                <div class="settings__label">
-                    <span>Car Speed</span>
-                    <span class="settings__value js-speed-value">1.00×</span>
-                </div>
-                <input class="settings__slider js-speed-slider" type="range" min="0.5" max="2" step="0.05" value="1">
-            </div>
-            <div class="settings__section">
-                <div class="settings__label">Music</div>
-                <button class="settings__music-toggle js-music-toggle" type="button">Music: On</button>
-                <div class="settings__credit">
-                    &ldquo;Warm Spot&rdquo; &middot; Bosnow<br>
-                    Music from Uppbeat
-                </div>
-            </div>
-            <div class="settings__version js-build-version"></div>
-        </div>
-    </div>
-
-    <a class="site-toggle js-site-toggle" href="/portfolio/">View 2D site</a>
-
-    <div class="chase-timer js-chase-timer">
-        <div class="chase-timer__notice js-chase-notice"></div>
-        <div class="chase-timer__row">
-            <span class="chase-timer__label">Time</span>
-            <span class="chase-timer__value js-chase-current">0.0s</span>
-        </div>
-        <div class="chase-timer__row">
-            <span class="chase-timer__label">Best</span>
-            <span class="chase-timer__value js-chase-best">0.0s</span>
-        </div>
-        <button class="chase-timer__toggle js-chase-toggle" type="button">Chase: On</button>
-    </div>
-
-    <!-- Touch HUD. Replaces the chase-timer panel on phones: the run time as bare
-         text over the world, and one pause button that holds every setting.
-         Hidden on desktop, which keeps the gear, the panel and the 2D-site link. -->
+    <!-- HUD. One shape on every device: the run time as bare text over the world,
+         and one pause button holding every setting. The settings gear, its panel,
+         the chase-timer panel and the 2D-site link all folded into this. -->
     <div class="hud-time js-hud-time">
         <div class="hud-time__row">
             <span class="hud-time__current js-hud-current">0.0s</span>
@@ -139,7 +87,7 @@
         <div class="hud-time__notice js-hud-notice"></div>
     </div>
 
-    <button class="pause-button js-pause-button" type="button" aria-label="Pause">
+    <button class="pause-button js-pause-button" type="button" aria-label="Pause" title="Pause (Esc)">
         <span class="pause-button__bar"></span>
         <span class="pause-button__bar"></span>
     </button>
@@ -206,6 +154,7 @@
                 <div class="pause-panel__footer">
                     <button class="pause-resume js-pause-resume" type="button">Resume</button>
                     <a class="pause-2d" href="/portfolio/">View 2D site &#8599;</a>
+                    <div class="pause-version js-build-version"></div>
                 </div>
             </div>
         </div>
@@ -220,5 +169,5 @@
 
     
 
-<script type="text/javascript" src="bundle.5a9499d59093b46a6ad4.js"></script></body>
+<script type="text/javascript" src="bundle.cf6fa10d2a150bd8df5a.js"></script></body>
 </html>
