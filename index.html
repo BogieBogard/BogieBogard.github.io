@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>MBogard.com</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicons (matched to bogiebogard.io's MB mark) -->
     <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
@@ -72,7 +72,11 @@
 
     <!-- Shared ambient-music player (also included by /portfolio/) so the
          background track carries across between the game and the 2D site. -->
-    <script src="/ambient.js" defer="defer"></script>
+    <script src="/ambient.js" defer></script>
+
+    <!-- Entry point. Webpack injected this; Vite resolves it from the HTML. -->
+  <script type="module" crossorigin src="/assets/index-BaHVqw5c.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BI6nH8kq.css">
 </head>
 <body>
 
@@ -150,6 +154,18 @@
                                 <button class="pause-toggle__button" type="button" data-value="off">Off</button>
                             </div>
                         </div>
+                        <!-- Weather is the modern render profile's; the legacy
+                             one never builds the particle field, so PauseMenu
+                             leaves this hidden rather than offering a control
+                             that would do nothing. -->
+                        <div class="pause-row js-pause-weather-section" hidden>
+                            <span class="pause-label">Weather</span>
+                            <div class="pause-toggle js-pause-weather">
+                                <button class="pause-toggle__button" type="button" data-value="clear">Clear</button>
+                                <button class="pause-toggle__button" type="button" data-value="rain">Rain</button>
+                                <button class="pause-toggle__button" type="button" data-value="snow">Snow</button>
+                            </div>
+                        </div>
                         <div class="pause-credit">
                             &ldquo;Warm Spot&rdquo; &middot; Bosnow &middot; Music from Uppbeat
                         </div>
@@ -180,7 +196,7 @@
     <div class="rift-flash js-rift-flash"></div>
     <div class="rift-danger js-rift-danger"></div>
 
-    
+    </div>
 
-<script type="text/javascript" src="bundle.7c5e0c8e7695d42c9e57.js"></script></body>
+</body>
 </html>
