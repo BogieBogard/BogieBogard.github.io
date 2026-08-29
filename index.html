@@ -22,7 +22,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=Space+Grotesk:wght@400;500&family=Space+Mono:wght@400;700&display=swap">
 
-    <!-- Critical inline CSS: webpack injects the real stylesheet via JS, so without
+    <!-- Critical inline CSS: the real stylesheet arrives with the app, so without
          this the page paints white with unstyled, left-justified menu text for a
          frame. This keeps a clean dark background + branded loader until ready. -->
     <style>
@@ -74,7 +74,6 @@
          background track carries across between the game and the 2D site. -->
     <script src="/ambient.js" defer></script>
 
-    <!-- Entry point. Webpack injected this; Vite resolves it from the HTML. -->
   <script type="module" crossorigin src="/assets/index-CaP609We.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-M21tCkrR.css">
 </head>
