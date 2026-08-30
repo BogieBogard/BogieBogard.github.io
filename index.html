@@ -43,6 +43,50 @@
             display: flex; align-items: center; justify-content: center;
             transition: opacity 0.6s ease;
         }
+        /* The spinner positions itself against its nearest positioned ancestor,
+           so it gets a box of its own rather than centring on the viewport --
+           that is what lets the label sit under it instead of on top of it.
+           44px is the spinner proper; its outer ring is 49px and overflows by
+           2.5px a side, which the gap below absorbs. */
+        .app-loading__inner {
+            display: flex; flex-direction: column; align-items: center; gap: 26px;
+        }
+        .app-loading__spinner { position: relative; width: 44px; height: 44px; }
+        /* Space Mono, tracked and uppercase: the same treatment every system
+           label on the site gets (see .pause-label). Cyan is the spinner's own
+           accent, so the two read as one object. */
+        .app-loading__label {
+            margin: 0;
+            font-family: 'Space Mono', ui-monospace, monospace;
+            font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+            color: #38bdf8;
+        }
+        /* All three dots are always in the line and only their opacity moves, so
+           nothing reflows as they light up. The first is lit throughout: the
+           count is cumulative -- one, two, three -- and the drop back to one is
+           the reset. */
+        .app-loading__dots span { opacity: 0.18; }
+        .app-loading__dots span:nth-child(1) { opacity: 1; }
+        /* One ellipsis per inner-ring revolution: the ring turns in 1150ms and
+           the three dots dial up in thirds of that, 383ms a beat, so the count
+           restarts on the same frame the ring closes its circle. The outer ring
+           (2300ms) therefore gets exactly two cycles per turn. Change one of
+           these numbers and the other two have to follow. */
+        .app-loading__dots span:nth-child(2) { animation: loading-dot-2 1150ms linear infinite; }
+        .app-loading__dots span:nth-child(3) { animation: loading-dot-3 1150ms linear infinite; }
+        @keyframes loading-dot-2 {
+            0%, 33.33% { opacity: 0.18; }
+            38%, 100%  { opacity: 1; }
+        }
+        @keyframes loading-dot-3 {
+            0%, 66.66% { opacity: 0.18; }
+            71.33%, 100% { opacity: 1; }
+        }
+        /* Nothing here carries meaning that the static text does not, so when
+           motion is unwelcome the dots simply sit there lit. */
+        @media (prefers-reduced-motion: reduce) {
+            .app-loading__dots span { animation: none; opacity: 1; }
+        }
         /* Whirlpool spinner — shared with the 2D portfolio (/portfolio/) for a
            consistent loading motif, recolored for the dark background here
            (light rings + cyan accent instead of the 2D site's black-on-white). */
@@ -74,12 +118,22 @@
          background track carries across between the game and the 2D site. -->
     <script src="/ambient.js" defer></script>
 
-  <script type="module" crossorigin src="/assets/index-UFFpQnLs.js"></script>
+  <script type="module" crossorigin src="/assets/index-CXbHY1Ip.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-M21tCkrR.css">
 </head>
 <body>
 
-    <div id="app-loading"><div class="cssload-whirlpool"></div></div>
+    <!-- The label says what the wait is for. A recruiter landing here has no way
+         to know a blank dark screen is fetching a 3D world rather than failing,
+         and three seconds of unexplained spinner is where people leave. The dots
+         are decoration on top of that sentence, so they are hidden from screen
+         readers rather than read out as changing text. -->
+    <div id="app-loading" role="status" aria-live="polite">
+        <div class="app-loading__inner">
+            <div class="app-loading__spinner"><div class="cssload-whirlpool"></div></div>
+            <p class="app-loading__label">Loading 3D assets<span class="app-loading__dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span></p>
+        </div>
+    </div>
 
     <canvas class="canvas js-canvas"></canvas>
 
