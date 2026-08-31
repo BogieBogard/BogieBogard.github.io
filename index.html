@@ -13,7 +13,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
     <link rel="manifest" href="/favicon/site.webmanifest">
     <meta name="msapplication-config" content="/favicon/browserconfig.xml">
-    <meta name="theme-color" content="#0b1424">
+    <meta name="theme-color" content="#00152c">
 
     <!-- Space Grotesk for every numeral and the panel heading, Space Mono for
          uppercase system labels, Hanken Grotesk for body copy — the same three
@@ -24,9 +24,10 @@
 
     <!-- Critical inline CSS: the real stylesheet arrives with the app, so without
          this the page paints white with unstyled, left-justified menu text for a
-         frame. This keeps a clean dark background + branded loader until ready. -->
+         frame. This holds the world's own backdrop and the branded loader on it
+         until the scene is ready. -->
     <style>
-        html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #0b1424; overflow: hidden; }
+        html, body { margin: 0; padding: 0; width: 100%; height: 100%; background: #00152c; overflow: hidden; }
 
         /* Hide the HUD chrome until the experience actually starts, then fade it
            in with the world (World.setReveal adds is-started). Not is-ready,
@@ -37,18 +38,53 @@
         body:not(.is-started) .pause-button { opacity: 0; pointer-events: none; }
         .hud-time, .pause-button { transition: opacity 0.5s ease 0.15s; }
 
-        /* Full-screen loader shown over everything until the scene is ready. */
+        /* Full-screen loader shown over everything until the scene is ready.
+           It paints the landing frame it is standing in front of, so the fade at
+           the end of loading lifts the spinner off the world rather than cutting
+           from a flat dark rectangle to a lit one.
+
+           Two rows and a ramp, which is all the landing frame is: the floor's
+           near edge across the bottom, the sky above its far edge across the
+           top, and perspective in between. Sampled from the built landing screen
+           at the default Midnight theme -- these are its floor corners after the
+           lighting rig has tinted them, NOT the raw palette in World/index.js,
+           which is a stop darker. The framing is resolution-independent, so one
+           set of numbers serves a phone and a monitor alike; measured mean error
+           against the real frame is ~3.5/255 per channel.
+
+           `the loading screen matches the world behind it` in regressions.spec.mjs
+           re-measures this, so change the default theme or the time of day and
+           the suite says so rather than leaving a seam nobody notices. */
         #app-loading {
-            position: fixed; inset: 0; z-index: 100; background: #0b1424;
+            position: fixed; inset: 0; z-index: 100;
+            background: linear-gradient(to right, #373f6f 0%, #27396c 25%, #1a4585 50%, #10529a 75%, #11529a 100%);
             display: flex; align-items: center; justify-content: center;
             transition: opacity 0.6s ease;
         }
-        /* The spinner positions itself against its nearest positioned ancestor,
-           so it gets a box of its own rather than centring on the viewport --
-           that is what lets the label sit under it instead of on top of it.
-           44px is the spinner proper; its outer ring is 49px and overflows by
-           2.5px a side, which the gap below absorbs. */
+        /* The sky, held solid over the top quarter and gone by three quarters
+           down, where the floor's own gradient stops changing. The stops between
+           are the perspective curve, solved from the measured centre column: the
+           ground gains brightness fastest right below the horizon. Without a
+           mask this layer covers the whole screen and the loader is flat dark
+           again -- which is exactly what it was before, so old browsers land
+           somewhere sensible. */
+        #app-loading::before {
+            content: "";
+            position: absolute; inset: 0;
+            background: linear-gradient(to right, #001021 0%, #001021 25%, #00152c 50%, #001934 75%, #001934 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0.72) 33%, rgba(0, 0, 0, 0.53) 42%, rgba(0, 0, 0, 0.37) 50%, rgba(0, 0, 0, 0.24) 58%, rgba(0, 0, 0, 0.11) 67%, rgba(0, 0, 0, 0) 75%);
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0.72) 33%, rgba(0, 0, 0, 0.53) 42%, rgba(0, 0, 0, 0.37) 50%, rgba(0, 0, 0, 0.24) 58%, rgba(0, 0, 0, 0.11) 67%, rgba(0, 0, 0, 0) 75%);
+        }
+        /* Positioned, because the backdrop's ::before is and paints first:
+           static content would end up underneath it.
+
+           The spinner inside positions itself against its nearest positioned
+           ancestor, so it gets a box of its own rather than centring on the
+           viewport -- that is what lets the label sit under it instead of on
+           top of it. 44px is the spinner proper; its outer ring is 49px and
+           overflows by 2.5px a side, which the gap below absorbs. */
         .app-loading__inner {
+            position: relative;
             display: flex; flex-direction: column; align-items: center; gap: 26px;
         }
         .app-loading__spinner { position: relative; width: 44px; height: 44px; }
@@ -118,7 +154,7 @@
          background track carries across between the game and the 2D site. -->
     <script src="/ambient.js" defer></script>
 
-  <script type="module" crossorigin src="/assets/index-CXbHY1Ip.js"></script>
+  <script type="module" crossorigin src="/assets/index-sfbI_RfB.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-M21tCkrR.css">
 </head>
 <body>
