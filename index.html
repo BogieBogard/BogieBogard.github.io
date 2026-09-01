@@ -154,8 +154,8 @@
          background track carries across between the game and the 2D site. -->
     <script src="/ambient.js" defer></script>
 
-  <script type="module" crossorigin src="/assets/index-sfbI_RfB.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-M21tCkrR.css">
+  <script type="module" crossorigin src="/assets/index-DRAToBxZ.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Bw3fCsRI.css">
 </head>
 <body>
 
@@ -243,10 +243,49 @@
                                 <button class="pause-toggle__button" type="button" data-value="off">Off</button>
                             </div>
                         </div>
-                        <div class="pause-credit">
-                            &ldquo;Warm Spot&rdquo; &middot; Bosnow &middot; Music from Uppbeat
-                        </div>
                     </section>
+                    <!-- Chaser behaviour, broken out one switch per idea.
+
+                         A tuning bench, not a finished settings group: the five
+                         features below shipped together and the only way to
+                         find out which of them is actually fun is to drive with
+                         each one off. Whichever survive get folded into the
+                         defaults and this collapses to one difficulty control.
+
+                         Inside the toggles column rather than a fourth one of
+                         its own — the panel's landscape grid is three columns
+                         wide at two breakpoints, and this column already
+                         scrolls, so nesting costs nothing and moves no
+                         furniture.
+
+                         Rows are built by PauseMenu.setChaseAi() from the table
+                         in ChaseBrain.js rather than written out here, so a
+                         feature added to the brain shows up without anyone
+                         remembering to edit this markup. -->
+                    <section class="pause-section pause-section--ai">
+                        <div class="pause-row">
+                            <span class="pause-label">Chaser AI</span>
+                            <span class="pause-tag">tuning</span>
+                        </div>
+                        <div class="js-pause-ai-rows"></div>
+                        <div class="pause-row">
+                            <span class="pause-label">Aggression</span>
+                            <span class="pause-value js-pause-ai-aggression-value">1.00&times;</span>
+                        </div>
+                        <div class="pause-slider">
+                            <div class="pause-slider__track">
+                                <div class="pause-slider__fill js-pause-ai-aggression-fill"></div>
+                            </div>
+                            <input class="pause-slider__input js-pause-ai-aggression" type="range" min="0.6" max="1.4" step="0.05" value="1" aria-label="Chaser aggression">
+                        </div>
+                        <button class="pause-ai-reset js-pause-ai-reset" type="button">Reset chaser AI</button>
+                    </section>
+                    <!-- Below the bench rather than above it: the credit is two
+                         wrapped lines that were sitting between Music and the
+                         controls this panel exists to reach right now. -->
+                    <div class="pause-credit pause-credit--footnote">
+                        &ldquo;Warm Spot&rdquo; &middot; Bosnow &middot; Music from Uppbeat
+                    </div>
                 </div>
                 <div class="pause-panel__footer">
                     <!-- Portrait stacks every section into one column, so most of
