@@ -73,46 +73,37 @@
             padding: clamp(24px, 5vh, 56px) 32px;
         }
 
-        /* Name and title, in the portfolio's letter-spaced style */
-        .intro-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 14px;
-            text-align: center;
+        /* Theater mode: while the video plays, everything else steps back */
+        .dim {
+            transition: opacity 0.6s ease;
         }
 
-        .name {
-            margin: 0 -0.42em 0 0;
-            font-weight: 700;
-            font-size: 26px;
-            line-height: 1.2;
-            letter-spacing: 0.42em;
-            text-transform: uppercase;
+        .is-theater .dim {
+            opacity: 0.18;
         }
 
-        .role {
-            margin: 0 -0.26em 0 0;
-            font-weight: 500;
-            font-size: 11px;
-            line-height: 1.4;
-            letter-spacing: 0.26em;
-            text-transform: uppercase;
-            color: var(--muted);
+        .is-theater .dim:hover,
+        .is-theater .dim:focus-within {
+            opacity: 1;
         }
 
         /* Player: sized so the whole 16:9 frame fits above the fold on a laptop */
         .player {
             position: relative;
-            margin-top: 34px;
-            width: min(1040px, 100%, max(480px, calc((100vh - 320px) * 16 / 9)));
-            width: min(1040px, 100%, max(480px, calc((100svh - 320px) * 16 / 9)));
+            width: min(1040px, 100%, max(480px, calc((100vh - 240px) * 16 / 9)));
+            width: min(1040px, 100%, max(480px, calc((100svh - 240px) * 16 / 9)));
             aspect-ratio: 16 / 9;
             border-radius: 6px;
             overflow: hidden;
             background: var(--frame);
             box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 40px 90px rgba(0, 0, 0, 0.55);
             container-type: inline-size;
+            transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.7s ease;
+        }
+
+        .is-theater .player {
+            transform: scale(1.04);
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 50px 120px rgba(0, 0, 0, 0.85);
         }
 
         .player video {
@@ -128,6 +119,19 @@
             outline: none;
         }
 
+        /* Thin progress line along the bottom edge of the video */
+        .progress-line {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 3px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left center;
+            pointer-events: none;
+        }
+
         /* Poster: the headshot sits exactly where the webcam window appears in the video */
         .poster {
             position: absolute;
@@ -137,11 +141,12 @@
             margin: 0;
             padding: 0;
             border: 0;
-            background: var(--frame);
+            background-color: var(--frame);
             color: var(--text);
             font: inherit;
             text-align: left;
             cursor: pointer;
+            transition: background-color 0.7s ease 0.1s;
         }
 
         .poster[hidden] {
@@ -168,13 +173,20 @@
             justify-content: center;
             gap: clamp(14px, 2vw, 30px);
             gap: clamp(14px, 3cqw, 30px);
+            transition: opacity 0.25s ease, transform 0.3s ease;
         }
 
-        .disc {
+        .disc-wrap {
+            position: relative;
             width: clamp(66px, 8vw, 124px);
             width: clamp(66px, 12.5cqw, 124px);
             aspect-ratio: 1;
             flex-shrink: 0;
+        }
+
+        .disc {
+            position: absolute;
+            inset: 0;
             border-radius: 50%;
             background: #ffffff;
             display: flex;
@@ -187,6 +199,15 @@
             width: 33%;
             height: auto;
             margin-left: 7%;
+        }
+
+        .ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            opacity: 0;
+            pointer-events: none;
         }
 
         .play-text {
@@ -226,6 +247,7 @@
             border-radius: 1.4cqw;
             overflow: hidden;
             background: #c4b1a5;
+            transition: opacity 0.9s ease 0.15s;
         }
 
         .poster-photo img {
@@ -236,14 +258,60 @@
             object-position: 50% 30%;
         }
 
-        @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-            .disc {
-                transition: transform 0.25s ease;
-            }
+        /* Click acknowledged: the button steps away, then the photo dissolves into the live webcam */
+        .is-starting .poster {
+            pointer-events: none;
+        }
 
-            .poster:hover .disc {
-                transform: scale(1.06);
-            }
+        .is-starting .poster-play {
+            opacity: 0;
+            transform: scale(0.92);
+        }
+
+        .is-live .poster {
+            background-color: rgba(5, 5, 6, 0);
+        }
+
+        .is-live .poster-photo {
+            opacity: 0;
+        }
+
+        /* Replay, shown when the video ends */
+        .replay {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            height: 52px;
+            margin: 0;
+            padding: 0 26px 0 20px;
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 999px;
+            background: rgba(10, 10, 11, 0.72);
+            color: #ffffff;
+            font: inherit;
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .replay[hidden] {
+            display: none;
+        }
+
+        .replay:hover {
+            background: rgba(40, 40, 44, 0.85);
+        }
+
+        .replay svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
         }
 
         /* Email */
@@ -277,12 +345,30 @@
             line-height: 1.3;
             color: var(--text);
             text-decoration: none;
-            border-bottom: 1px solid var(--accent);
-            padding-bottom: 2px;
         }
 
         .email:hover {
             color: var(--accent);
+        }
+
+        .email-text {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 3px;
+        }
+
+        .uline {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 1px;
+            background: var(--accent);
+            transform-origin: left center;
+        }
+
+        .is-ended .uline {
+            height: 2px;
         }
 
         .copy {
@@ -369,34 +455,135 @@
             background: rgba(255, 255, 255, 0.18);
         }
 
+        /* Motion: pulse to invite the click, then hand off to the email when the video ends */
+        @media (prefers-reduced-motion: no-preference) {
+            .ring {
+                animation: ring-pulse 2.8s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+            }
+
+            .is-starting .ring {
+                animation: none;
+            }
+
+            .replay {
+                animation: fade-in 0.5s ease 0.2s both;
+            }
+
+            .is-ended .uline {
+                animation: draw-line 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.4s both;
+            }
+
+            .is-ended .copy {
+                animation: copy-pulse 1.2s ease-out 1.2s 1 both;
+            }
+        }
+
+        @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+            .disc {
+                transition: transform 0.25s ease;
+            }
+
+            .poster:hover .disc {
+                transform: scale(1.06);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .player {
+                transition: none;
+            }
+
+            .is-theater .player,
+            .is-starting .poster-play {
+                transform: none;
+            }
+        }
+
+        @keyframes ring-pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+
+            70%,
+            100% {
+                transform: scale(1.7);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes draw-line {
+            from {
+                transform: scaleX(0);
+            }
+
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        @keyframes copy-pulse {
+            from {
+                box-shadow: 0 0 0 0 rgba(11, 144, 239, 0.6);
+            }
+
+            to {
+                box-shadow: 0 0 0 14px rgba(11, 144, 239, 0);
+            }
+        }
+
+        @keyframes copy-flash {
+            from {
+                background-color: rgba(11, 144, 239, 0.28);
+            }
+
+            to {
+                background-color: rgba(11, 144, 239, 0);
+            }
+        }
+
         /* Phones: stack from the top, full-width video, a big email row */
         @media (max-width: 599px) {
             .page {
                 justify-content: flex-start;
-                padding: 44px 16px 32px;
-            }
-
-            .intro-header {
-                gap: 12px;
-            }
-
-            .name {
-                margin-right: -0.34em;
-                font-size: 18px;
-                letter-spacing: 0.34em;
-            }
-
-            .role {
-                margin-right: -0.22em;
-                font-size: 10px;
-                letter-spacing: 0.22em;
+                padding: 32px 16px;
             }
 
             .player {
-                margin-top: 28px;
                 width: 100%;
                 border-radius: 5px;
                 box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+            }
+
+            .is-theater .player {
+                transform: scale(1.03);
+                box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 24px 60px rgba(0, 0, 0, 0.8);
+            }
+
+            .progress-line {
+                height: 2px;
+            }
+
+            .replay {
+                height: 44px;
+                padding: 0 20px 0 16px;
+                font-size: 11px;
+                gap: 10px;
+            }
+
+            .replay svg {
+                width: 15px;
+                height: 15px;
             }
 
             .contact {
@@ -425,7 +612,15 @@
                 align-items: center;
                 padding: 0 16px;
                 font-size: 15px;
-                border-bottom: 0;
+            }
+
+            /* No underline at rest on phones; it draws in when the video ends */
+            .uline {
+                transform: scaleX(0);
+            }
+
+            .is-ended .copy {
+                animation-name: copy-flash;
             }
 
             .copy {
@@ -482,6 +677,16 @@
             }
         }
 
+        @media (max-width: 599px) and (prefers-reduced-motion: reduce) {
+            .is-theater .player {
+                transform: none;
+            }
+
+            .is-ended .uline {
+                transform: none;
+            }
+        }
+
         @media (max-width: 360px) {
             .email {
                 padding: 0 12px;
@@ -502,21 +707,27 @@
 
 <body>
     <main class="page">
-        <header class="intro-header">
-            <h1 class="name">Matthew Bogard</h1>
-            <p class="role">Senior Full Stack Engineer</p>
-        </header>
-
-        <section class="player" aria-label="Intro video">
+        <section class="player" id="player" aria-label="Intro video">
             <video id="intro-video" preload="auto" playsinline tabindex="-1">
                 <source src="/intro/assets/matthew-bogard-intro.mp4" type="video/mp4">
             </video>
+            <span class="progress-line" id="intro-progress" aria-hidden="true"></span>
+            <button class="replay" id="intro-replay" type="button" aria-label="Replay intro video" hidden>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 12a9 9 0 1 0 3-6.7" />
+                    <path d="M3 4v5h5" />
+                </svg>
+                <span>Replay</span>
+            </button>
             <button class="poster" id="intro-poster" type="button" aria-label="Play intro video, 1 minute 26 seconds">
                 <span class="poster-play" aria-hidden="true">
-                    <span class="disc">
-                        <svg viewBox="0 0 24 26" aria-hidden="true">
-                            <path d="M3 2.6v20.8a1.2 1.2 0 0 0 1.8 1l17.2-10.4a1.2 1.2 0 0 0 0-2L4.8 1.6A1.2 1.2 0 0 0 3 2.6z" fill="#0a0a0b" />
-                        </svg>
+                    <span class="disc-wrap">
+                        <span class="ring"></span>
+                        <span class="disc">
+                            <svg viewBox="0 0 24 26" aria-hidden="true">
+                                <path d="M3 2.6v20.8a1.2 1.2 0 0 0 1.8 1l17.2-10.4a1.2 1.2 0 0 0 0-2L4.8 1.6A1.2 1.2 0 0 0 3 2.6z" fill="#0a0a0b" />
+                            </svg>
+                        </span>
                     </span>
                     <span class="play-text">
                         <span class="play-label">Play intro</span>
@@ -529,10 +740,10 @@
             </button>
         </section>
 
-        <section class="contact" aria-label="Contact">
+        <section class="contact dim" id="contact" aria-label="Contact">
             <p class="invite">If you'd like to talk, email me and we'll find a time for a call.</p>
             <div class="email-row" id="email-row">
-                <a class="email" href="mailto:matthewkbogard@gmail.com">matthewkbogard@gmail.com</a>
+                <a class="email" href="mailto:matthewkbogard@gmail.com"><span class="email-text">matthewkbogard@gmail.com<span class="uline" aria-hidden="true"></span></span></a>
                 <button class="copy" id="copy-email" type="button" aria-label="Copy email address">
                     <svg class="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <rect x="9" y="9" width="12" height="12" rx="2" />
@@ -548,7 +759,7 @@
             </div>
         </section>
 
-        <div class="more-links">
+        <div class="more-links dim">
             <a href="/portfolio/">Portfolio</a>
             <span class="sep" aria-hidden="true"></span>
             <a href="/">Drive the 3D site</a>
@@ -558,20 +769,123 @@
     <script>
         (function () {
             var EMAIL = 'matthewkbogard@gmail.com';
+            var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-            // Click to play with sound; native controls appear once it starts
+            var page = document.querySelector('.page');
+            var player = document.getElementById('player');
             var video = document.getElementById('intro-video');
             var poster = document.getElementById('intro-poster');
+            var replay = document.getElementById('intro-replay');
+            var progress = document.getElementById('intro-progress');
+            var contact = document.getElementById('contact');
+            var frame = 0;
 
+            // Progress line follows playback smoothly while the video plays
+            function drawProgress() {
+                var ratio = video.duration ? video.currentTime / video.duration : 0;
+                progress.style.transform = 'scaleX(' + Math.min(1, Math.max(0, ratio)) + ')';
+            }
+
+            function followProgress() {
+                drawProgress();
+                frame = requestAnimationFrame(followProgress);
+            }
+
+            function stopFollowing() {
+                cancelAnimationFrame(frame);
+                drawProgress();
+            }
+
+            // The headshot dissolves into the webcam window, which sits in the same spot in the video
+            function reveal() {
+                if (player.classList.contains('is-live')) return;
+                player.classList.add('is-live');
+                setTimeout(function () {
+                    poster.hidden = true;
+                    video.controls = true;
+                }, 1100);
+            }
+
+            // Click to play with sound
             poster.addEventListener('click', function () {
-                poster.hidden = true;
-                video.controls = true;
+                if (player.classList.contains('is-starting')) return;
+                var clickedAt = Date.now();
+                player.classList.add('is-starting');
+                page.classList.add('is-theater');
                 video.focus({ preventScroll: true });
-                var playing = video.play();
-                if (playing && typeof playing.catch === 'function') {
-                    playing.catch(function () { });
+
+                // Wait for real playback so the photo fades into moving video, not a black frame
+                var fallback = setTimeout(reveal, 2500);
+                video.addEventListener('playing', function () {
+                    clearTimeout(fallback);
+                    setTimeout(reveal, Math.max(0, 220 - (Date.now() - clickedAt)));
+                }, { once: true });
+
+                var attempt = video.play();
+                if (attempt && typeof attempt.catch === 'function') {
+                    attempt.catch(function () {
+                        clearTimeout(fallback);
+                        page.classList.remove('is-theater');
+                        reveal();
+                    });
                 }
             });
+
+            video.addEventListener('play', function () {
+                page.classList.add('is-theater');
+                page.classList.remove('is-ended');
+                replay.hidden = true;
+                cancelAnimationFrame(frame);
+                followProgress();
+            });
+
+            video.addEventListener('pause', function () {
+                page.classList.remove('is-theater');
+                stopFollowing();
+            });
+
+            video.addEventListener('timeupdate', drawProgress);
+            video.addEventListener('seeked', drawProgress);
+
+            video.addEventListener('seeking', function () {
+                if (!video.ended) replay.hidden = true;
+            });
+
+            // When it ends: bring the page back and point at the email
+            video.addEventListener('ended', function () {
+                stopFollowing();
+                page.classList.remove('is-theater');
+                page.classList.add('is-ended');
+                replay.hidden = false;
+                exitFullscreen();
+                setTimeout(bringEmailIntoView, 400);
+            });
+
+            replay.addEventListener('click', function () {
+                video.currentTime = 0;
+                video.focus({ preventScroll: true });
+                var attempt = video.play();
+                if (attempt && typeof attempt.catch === 'function') {
+                    attempt.catch(function () { });
+                }
+            });
+
+            function exitFullscreen() {
+                if (document.fullscreenElement && document.exitFullscreen) {
+                    var exiting = document.exitFullscreen();
+                    if (exiting && typeof exiting.catch === 'function') {
+                        exiting.catch(function () { });
+                    }
+                } else if (video.webkitDisplayingFullscreen && video.webkitExitFullscreen) {
+                    video.webkitExitFullscreen();
+                }
+            }
+
+            function bringEmailIntoView() {
+                var box = contact.getBoundingClientRect();
+                if (box.top >= 0 && box.bottom <= window.innerHeight) return;
+                contact.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'nearest' });
+            }
 
             // One-click copy with a brief "Copied" confirmation
             var row = document.getElementById('email-row');
